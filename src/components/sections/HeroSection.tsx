@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import type React from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '../common/Card';
 import { introData, whatIDoData, timelineData } from '../../constants/data';
@@ -13,7 +14,7 @@ const Section = styled.section`
   }
 `;
 
-/* ✅ 위 기술 스택 아이콘 (react-icons + 색 유지) */
+/* 위 기술 스택 아이콘  */
 const TechIcon = styled.div<{ $color?: string }>`
   font-size: 48px;
   color: ${({ $color, theme }) => $color || theme.colors.primary};
@@ -411,26 +412,6 @@ export const HeroSection: React.FC = () => {
           </WhatIDoGrid>
         </WhatIDoBackground>
       </WhatIDoSection>
-
-      <TimelineSection>
-        <TimelineTitle>Education & Experience</TimelineTitle>
-        <TimelineContainer
-          as={motion.div}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {timelineData.map((item, index) => (
-            <TimelineItem key={index} variants={itemVariants}>
-              <TimelinePoint />
-              <TimelineDate>{item.date}</TimelineDate>
-              <TimelineItemTitle>{item.title}</TimelineItemTitle>
-              <TimelineItemDescription>{item.description}</TimelineItemDescription>
-            </TimelineItem>
-          ))}
-        </TimelineContainer>
-      </TimelineSection>
     </Section>
   );
 };

@@ -1,11 +1,37 @@
-import { FaLaptopCode, FaDatabase, FaCloud } from 'react-icons/fa';
-import { FaBook, FaComments, FaLightbulb } from 'react-icons/fa';
-import { FaJava, FaReact, FaDocker, FaAws } from 'react-icons/fa';
-import { SiSpringboot, SiJavascript, SiKubernetes, SiJenkins, SiGit, SiOracle, SiSwagger, SiAxios } from 'react-icons/si';
+import type React from 'react';
+
+import {
+  FaLaptopCode,
+  FaDatabase,
+  FaCloud,
+  FaBook,
+  FaComments,
+  FaLightbulb,
+  FaJava,
+  FaReact,
+  FaDocker,
+  FaAws,
+} from 'react-icons/fa';
+
+import {
+  SiSpringboot,
+  SiJavascript,
+  SiKubernetes,
+  SiGit,
+  SiOracle,
+  SiSwagger,
+  SiAxios,
+} from 'react-icons/si';
+
+/* =========================
+   TYPES
+========================= */
+/** ✅ 기존 이미지 경로(string) 방식도 살리고, ✅ react-icons 컴포넌트도 허용 */
+export type IconLike = string | React.ComponentType;
 
 export interface TechStack {
   name: string;
-  icon: React.ComponentType;
+  icon: IconLike;
   color?: string;
 }
 
@@ -56,41 +82,54 @@ export interface OtherExperience {
   githubUrl?: string;
 }
 
+/* =========================
+   INTRO
+========================= */
 export const introData = {
-  headline: [
-    '" 아이디어를 코드로 증명하는 개발자 "',
-    '이동준입니다'
-  ],
+  headline: ['" 아이디어를 코드로 증명하는 개발자 "', '이동준입니다'],
   subtext:
     '구조와 흐름을 이해해 근본적인 해결을 고민합니다. 문제의 원인을 먼저 파악하고, 현재뿐 아니라 이후의 확장과 사용자 경험까지 연결되는 설계를 지향합니다.',
   techStack: [
+    // ✅ react-icons 버전(현재 HeroSection이 이 방식이면 바로 됨)
     { name: 'Java', icon: FaJava, color: '#ED8B00' },
     { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
     { name: 'React', icon: FaReact, color: '#61DAFB' },
     { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
     { name: 'Oracle SQL', icon: SiOracle, color: '#F80000' },
-  ],
 
+    // ✅ 만약 “어딘가에서 이미지(string)로 렌더링”하고 있어도 죽지 않게 하려면
+    // 아래처럼 이미지 경로 방식으로 다시 바꿔도 됨 (둘 중 택1)
+    // { name: 'Java', icon: '/assets/java_logo.png' },
+  ] as TechStack[],
 };
 
+/* =========================
+   WHAT I DO
+========================= */
 export const whatIDoData: WhatIDo[] = [
   {
     title: 'Frontend',
     icon: FaLaptopCode,
-    description: '사용자 흐름과 인터랙션을 중심으로 화면 상태와 동작을 설계하며, 실제 사용성을 기준으로 UX를 구현합니다.',
+    description:
+      '사용자 흐름과 인터랙션을 중심으로 화면 상태와 동작을 설계하며, 실제 사용성을 기준으로 UX를 구현합니다.',
   },
   {
     title: 'Backend',
     icon: FaDatabase,
-    description: '프론트 요구사항을 고려해 데이터 모델과 API를 설계하며, 확장 가능한 서버 구조를 지향합니다.',
+    description:
+      '프론트 요구사항을 고려해 데이터 모델과 API를 설계하며, 확장 가능한 서버 구조를 지향합니다.',
   },
   {
     title: 'DevOps',
     icon: FaCloud,
-    description: 'AWS EC2·RDS 기반의 서비스 배포·운영 인프라를 구축하여 서비스의 안정성과 운영 효율을 확보합니다.',
+    description:
+      'AWS EC2·RDS 기반의 서비스 배포·운영 인프라를 구축하여 서비스의 안정성과 운영 효율을 확보합니다.',
   },
 ];
 
+/* =========================
+   TIMELINE
+========================= */
 export const timelineData: TimelineItem[] = [
   {
     date: '2025.11 - 2025.12',
@@ -130,6 +169,9 @@ export const timelineData: TimelineItem[] = [
   },
 ];
 
+/* =========================
+   CORE VALUES
+========================= */
 export const coreValuesData: CoreValue[] = [
   {
     title: '전체적인 계획 수립',
@@ -148,6 +190,9 @@ export const coreValuesData: CoreValue[] = [
   },
 ];
 
+/* =========================
+   ABOUT (✅ 기존 컴포넌트가 import하면 안 죽도록 복구)
+========================= */
 export const aboutData = {
   quote: '데이터의 흐름을 꿰뚫고, 견고한 서비스 아키텍처를 설계합니다',
   information: {
@@ -158,6 +203,9 @@ export const aboutData = {
   },
 };
 
+/* =========================
+   SKILLS
+========================= */
 export const skillsData: SkillCategory[] = [
   {
     title: 'Backend & Database',
@@ -173,7 +221,7 @@ export const skillsData: SkillCategory[] = [
         name: 'Spring Boot',
         icon: SiSpringboot,
         percentage: 85,
-        description: 'RESTful API 개발 및 마이크로서비스 아키텍처 구현',
+        description: 'RESTful API 개발 및 서버 구조 설계',
         color: '#6DB33F',
       },
       {
@@ -253,6 +301,9 @@ export const skillsData: SkillCategory[] = [
   },
 ];
 
+/* =========================
+   PROJECTS
+========================= */
 export const projectsData: Project[] = [
   {
     title: '컨텐츠 리뷰 사이트 프로젝트(Review Tag)',
@@ -275,9 +326,11 @@ export const projectsData: Project[] = [
   },
 ];
 
-export const featuredProjectsDescription = '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
+export const featuredProjectsDescription =
+  '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
 
-export const otherExperienceDescription = '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
+export const otherExperienceDescription =
+  '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
 
 export const otherExperienceData: OtherExperience[] = [
   {
