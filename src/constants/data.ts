@@ -1,11 +1,12 @@
-import { FaCode, FaServer, FaCloud } from 'react-icons/fa';
+import { FaLaptopCode, FaDatabase, FaCloud } from 'react-icons/fa';
 import { FaBook, FaComments, FaLightbulb } from 'react-icons/fa';
 import { FaJava, FaReact, FaDocker, FaAws } from 'react-icons/fa';
 import { SiSpringboot, SiJavascript, SiKubernetes, SiJenkins, SiGit, SiOracle, SiSwagger, SiAxios } from 'react-icons/si';
 
 export interface TechStack {
   name: string;
-  icon: string; // ✅ 로고 이미지 경로로 변경
+  icon: React.ComponentType;
+  color?: string;
 }
 
 export interface WhatIDo {
@@ -62,45 +63,50 @@ export const introData = {
   ],
   subtext:
     '구조와 흐름을 이해해 근본적인 해결을 고민합니다. 문제의 원인을 먼저 파악하고, 현재뿐 아니라 이후의 확장과 사용자 경험까지 연결되는 설계를 지향합니다.',
-  // ✅ 문자열 배열 → 로고 객체 배열로 변경
   techStack: [
-    { name: 'Java', icon: '/assets/java_logo.png' },
-    { name: 'Spring Boot', icon: '/assets/springboot_logo.png' }, // 파일명 없으면 아래처럼 임시 대체 가능
-    // { name: 'Spring Boot', icon: '/assets/java_logo.png' },
-    { name: 'React', icon: '/assets/react_logo.png' },
-    { name: 'JavaScript', icon: '/assets/javascript_logo.png' },
-    { name: 'Oracle SQL', icon: '/assets/oracle_logo.png' },
-  ] as TechStack[],
+    { name: 'Java', icon: FaJava, color: '#ED8B00' },
+    { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
+    { name: 'React', icon: FaReact, color: '#61DAFB' },
+    { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+    { name: 'Oracle SQL', icon: SiOracle, color: '#F80000' },
+  ],
+
 };
 
 export const whatIDoData: WhatIDo[] = [
   {
     title: 'Frontend',
-    icon: FaCode,
-    description: 'React를 활용하여 웹과 모바일 환경 모두에서 끊김 없는 사용자 경험(UX)을 설계합니다.',
+    icon: FaLaptopCode,
+    description: '사용자 흐름과 인터랙션을 중심으로 화면 상태와 동작을 설계하며, 실제 사용성을 기준으로 UX를 구현합니다.',
   },
   {
     title: 'Backend',
-    icon: FaServer,
-    description: 'Spring Boot와 NestJS를 상황에 맞게 활용하며, 비즈니스 로직에 최적화된 RESTful API 서버를 구축합니다.',
+    icon: FaDatabase,
+    description: '프론트 요구사항을 고려해 데이터 모델과 API를 설계하며, 확장 가능한 서버 구조를 지향합니다.',
   },
   {
     title: 'DevOps',
     icon: FaCloud,
-    description: 'AWS EC2/RDS 환경을 다루며, 서비스 배포와 운영을 위한 기초 인프라를 구축합니다.',
+    description: 'AWS EC2·RDS 기반의 서비스 배포·운영 인프라를 구축하여 서비스의 안정성과 운영 효율을 확보합니다.',
   },
 ];
 
 export const timelineData: TimelineItem[] = [
   {
     date: '2025.11 - 2025.12',
-    title: '컨텐츠 리뷰 사이트 프로젝트(Review Tag)',
+    title: 'Flutter 팀 프로젝트(패션관리 앱)',
     description:
       '풀스택 개발자로 참여하여 Spring Boot 와 React를 사용하여 RESTful API를 구현하고, 컨텐츠 퀴즈 기능과 관리자 기능, 랭킹 페이지를 구현하였습니다.',
   },
   {
     date: '2025.10 - 2025.11',
-    title: '개인 쇼핑몰 프로젝트(King Heart)',
+    title: 'React 개인 프로젝트(취미 SNS)',
+    description:
+      '풀스택 개발자로 참여하여 Spring boot로 백엔드를 구축하고 JSP를 통해 화면을 전송하는 MVC 패턴을 익혔고, 장바구니 기능 및 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
+  },
+  {
+    date: '2025.10 - 2025.11',
+    title: 'Spring 팀 프로젝트(여행 계획 웹사이트)',
     description:
       '풀스택 개발자로 참여하여 Spring boot로 백엔드를 구축하고 JSP를 통해 화면을 전송하는 MVC 패턴을 익혔고, 장바구니 기능 및 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
   },
@@ -237,13 +243,6 @@ export const skillsData: SkillCategory[] = [
         color: '#FF9900',
       },
       {
-        name: 'Jenkins',
-        icon: SiJenkins,
-        percentage: 70,
-        description: 'CI/CD 파이프라인 구축 및 자동화',
-        color: '#D24939',
-      },
-      {
         name: 'Git',
         icon: SiGit,
         percentage: 85,
@@ -256,7 +255,7 @@ export const skillsData: SkillCategory[] = [
 
 export const projectsData: Project[] = [
   {
-    title: '쇼핑몰 프로젝트 여행사',
+    title: '컨텐츠 리뷰 사이트 프로젝트(Review Tag)',
     thumbnail: '/assets/review_tag_main.png',
     description:
       'Spring Boot와 React를 활용하여 RESTful 아키텍처를 구현하고, 컨텐츠 퀴즈와 관리자 페이지, 랭킹 페이지를 구현하였습니다.',
@@ -267,7 +266,7 @@ export const projectsData: Project[] = [
     ],
   },
   {
-    title: '개인 쇼핑몰 프로젝트(Hobby Wave)',
+    title: '개인 쇼핑몰 프로젝트(King Heart)',
     thumbnail: '/assets/review_tag_main.png',
     description:
       'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 장바구니 기능과 상품 카테고리 구현과 결제 기능을 구현하였습니다.',

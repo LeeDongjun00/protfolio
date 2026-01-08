@@ -13,10 +13,13 @@ const Section = styled.section`
   }
 `;
 
-const TechIcon = styled.img`
-  width : 28px;
-  height : 28px;
-  object-fit : contain;
+/* ✅ 위 기술 스택 아이콘 (react-icons + 색 유지) */
+const TechIcon = styled.div<{ $color?: string }>`
+  font-size: 48px;
+  color: ${({ $color, theme }) => $color || theme.colors.primary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const IntroArea = styled.div`
@@ -79,48 +82,120 @@ const Subtext = styled(motion.p)`
 const TechStackTags = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 3rem;
   margin-top: 1rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    justify-content: center;
+    gap: 2rem;
+  }
 `;
 
-const TechTag = styled.span`
-  padding: 0.5rem 1rem;
-  background: ${({ theme }) => theme.colors.gray.light};
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.text.heading};
-  border: 1px solid ${({ theme }) => theme.colors.gray.border};
-`;
+/* =========================
+   What I Do (배경 박스 + 흐름 카드)
+========================= */
 
 const WhatIDoSection = styled.div`
   margin-bottom: 6rem;
 `;
 
-const WhatIDoTitle = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.text.heading};
-  margin-bottom: 3rem;
+const FlowTitle = styled.h2`
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.text.body};
   text-align: center;
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
 `;
 
-const WhatIDoGrid = styled.div`
+const Highlight = styled.span`
+  color: ${({ theme }) => theme.colors.text.heading};
+  font-weight: 700;
+`;
+
+/* ✅ 요청: 이 영역 뒤에 “되게 흐린 박스” */
+const WhatIDoBackground = styled.div`
+  position: relative;
+  padding: 3rem 2rem;
+  margin-top: 2.25rem;
+  border-radius: 24px;
+
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+
+  backdrop-filter: blur(6px);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 2rem 1.5rem;
+    margin-top: 1.75rem;
+  }
+`;
+
+const WhatIDoGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  align-items: stretch;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
   }
 `;
 
-const WhatIDoCard = styled(Card)`
+/* 화살표 */
+const FlowArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  right: -28px; /* 카드 밖으로 살짝 침범 */
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: ${({ theme }) => theme.colors.gray.border};
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 5;
+
+  /* 화살표를 원형에 넣기 */
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.025);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: none;
+  }
+`;
+
+const WhatIDoItem = styled(motion.div)`
+  position: relative;
+`;
+
+const WhatIDoCard = styled(Card)<{ $emphasis?: boolean }>`
+  position: relative; /* ✅ 화살표 absolute 기준 */
+  height: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+
+  /* 중앙(Backend)만 살짝 강조 */
+  ${({ $emphasis }) =>
+    $emphasis
+      ? `
+    transform: scale(1.03);
+  `
+      : ``}
 `;
 
 const WhatIDoIcon = styled.div`
@@ -139,6 +214,10 @@ const WhatIDoDescription = styled.p`
   color: ${({ theme }) => theme.colors.text.body};
   line-height: 1.6;
 `;
+
+/* =========================
+   Timeline
+========================= */
 
 const TimelineSection = styled.div``;
 
@@ -160,17 +239,16 @@ const TimelineItem = styled(motion.div)`
   padding-bottom: 3rem;
   padding-left: 2rem;
 
-  /* 각 항목마다 독립적인 수직선 (막대사탕 모양 - 원 아래에서 시작, 텍스트 끝까지) */
   &::before {
     content: '';
     position: absolute;
-    left: calc(-1.5rem + 10px); /* 원의 중심에 맞춤 (원 너비 20px의 절반) */
-    top: 20px; /* 큰 원(바깥쪽 원)의 하단 위치 (원 높이 20px) */
-    bottom: 3rem; /* padding-bottom 제외하고 텍스트 끝까지 */
+    left: calc(-1.5rem + 10px);
+    top: 20px;
+    bottom: 3rem;
     width: 2px;
     background: ${({ theme }) => theme.colors.primary};
     z-index: 0;
-    transform: translateX(-50%); /* 선의 중심을 원의 중심에 정확히 맞춤 */
+    transform: translateX(-50%);
   }
 `;
 
@@ -182,7 +260,6 @@ const TimelinePoint = styled.div`
   height: 20px;
   z-index: 2;
 
-  /* 바깥쪽 원 (얇은 파란색 테두리/그림자) */
   &::before {
     content: '';
     position: absolute;
@@ -197,7 +274,6 @@ const TimelinePoint = styled.div`
     z-index: 1;
   }
 
-  /* 안쪽 원 (파란색 채워진 원 + 흰색 테두리) */
   &::after {
     content: '';
     position: absolute;
@@ -238,9 +314,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
@@ -249,9 +323,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.5,
-    },
+    transition: { duration: 0.5 },
   },
 };
 
@@ -265,12 +337,10 @@ export const HeroSection: React.FC = () => {
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 0.5, type: 'spring' }}
           >
-            <ProfileImage
-              src="/assets/identification.png"
-              alt="프로필 사진"
-            />
+            <ProfileImage src="/assets/identification.png" alt="프로필 사진" />
           </motion.div>
         </ProfileImageWrapper>
+
         <IntroText>
           <Headline>
             {introData.headline.map((line, index) => (
@@ -293,43 +363,53 @@ export const HeroSection: React.FC = () => {
           >
             {introData.subtext}
           </Subtext>
+
           <TechStackTags
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            {introData.techStack.map((tech, index) => (
-              <TechTag key={index}>
-                <TechIcon src={tech.icon} alt={tech.name} />
-              </TechTag>
-            ))}
-
+            {introData.techStack.map((tech, index) => {
+              const Icon = tech.icon;
+              return (
+                <TechIcon key={index} $color={tech.color} title={tech.name}>
+                  <Icon />
+                </TechIcon>
+              );
+            })}
           </TechStackTags>
         </IntroText>
       </IntroArea>
 
       <WhatIDoSection>
-        <WhatIDoTitle>What I Do</WhatIDoTitle>
-        <WhatIDoGrid
-          as={motion.div}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {whatIDoData.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <WhatIDoCard key={index} $shadow as={motion.div} variants={itemVariants}>
-                <WhatIDoIcon>
-                  <Icon />
-                </WhatIDoIcon>
-                <WhatIDoCardTitle>{item.title}</WhatIDoCardTitle>
-                <WhatIDoDescription>{item.description}</WhatIDoDescription>
-              </WhatIDoCard>
-            );
-          })}
-        </WhatIDoGrid>
+        <FlowTitle>
+          <Highlight>기획부터 구현, 배포와 운영까지</Highlight> 전 과정을 설계하고 구현합니다.
+        </FlowTitle>
+
+        <WhatIDoBackground>
+          <WhatIDoGrid variants={containerVariants} initial="hidden" animate="visible">
+            {whatIDoData.map((item, index) => {
+              const Icon = item.icon;
+              const isBackend = item.title.toLowerCase() === 'backend';
+              const isLast = index === whatIDoData.length - 1;
+
+              return (
+                <WhatIDoItem key={index} variants={itemVariants}>
+                  <WhatIDoCard $shadow $emphasis={isBackend}>
+                    <WhatIDoIcon>
+                      <Icon />
+                    </WhatIDoIcon>
+
+                    <WhatIDoCardTitle>{item.title}</WhatIDoCardTitle>
+                    <WhatIDoDescription>{item.description}</WhatIDoDescription>
+
+                    {!isLast && <FlowArrow>→</FlowArrow>}
+                  </WhatIDoCard>
+                </WhatIDoItem>
+              );
+            })}
+          </WhatIDoGrid>
+        </WhatIDoBackground>
       </WhatIDoSection>
 
       <TimelineSection>
@@ -342,10 +422,7 @@ export const HeroSection: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           {timelineData.map((item, index) => (
-            <TimelineItem
-              key={index}
-              variants={itemVariants}
-            >
+            <TimelineItem key={index} variants={itemVariants}>
               <TimelinePoint />
               <TimelineDate>{item.date}</TimelineDate>
               <TimelineItemTitle>{item.title}</TimelineItemTitle>
@@ -357,4 +434,3 @@ export const HeroSection: React.FC = () => {
     </Section>
   );
 };
-
