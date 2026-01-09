@@ -1,3 +1,4 @@
+import type React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Card } from '../common/Card';
@@ -411,26 +412,8 @@ export const HeroSection: React.FC = () => {
           </WhatIDoGrid>
         </WhatIDoBackground>
       </WhatIDoSection>
-
-      <TimelineSection>
-        <TimelineTitle>Education & Experience</TimelineTitle>
-        <TimelineContainer
-          as={motion.div}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {timelineData.map((item, index) => (
-            <TimelineItem key={index} variants={itemVariants}>
-              <TimelinePoint />
-              <TimelineDate>{item.date}</TimelineDate>
-              <TimelineItemTitle>{item.title}</TimelineItemTitle>
-              <TimelineItemDescription>{item.description}</TimelineItemDescription>
-            </TimelineItem>
-          ))}
-        </TimelineContainer>
-      </TimelineSection>
     </Section>
   );
 };
+
+export default HeroSection;
