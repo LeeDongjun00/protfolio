@@ -2,21 +2,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+
 import { Card } from '../common/Card';
 import { LinkButton } from '../common/Button';
 import { SectionTitle } from '../common/SectionTitle';
+
 import { FaGithub } from 'react-icons/fa';
 import { HiArrowUpRight } from 'react-icons/hi2';
-import { timelineData, projectsData, featuredProjectsDescription } from '../../constants/data';
+
+import {
+  timelineData,
+  projectsData,
+  featuredProjectsDescription,
+} from '../../constants/data';
 
 /**
- * - timelineData 각 항목 아래에 projectsData 카드(썸네일+설명+태그+깃허브) 끼워 넣기
- * - 매핑은 EXPERIENCE_PROJECT_MAP만 바꾸면 됨
+ * ✅ timeline index -> projects index 매핑
+ * 여기만 바꾸면 "어떤 타임라인 아래에 어떤 프로젝트가 붙는지" 제어됩니다.
  */
 const EXPERIENCE_PROJECT_MAP: Record<number, number[]> = {
   0: [0],
   1: [1],
-  // 필요하면 계속 추가
 };
 
 const Section = styled.section`
@@ -44,9 +50,9 @@ const Description = styled(motion.p)`
   }
 `;
 
-const TimelineWrap = styled.div`
+const TimelineWrap = styled(motion.div)`
   position: relative;
-  padding-left: 52px;
+  padding-left: 52px; /* 라인/도트 영역 */
 `;
 
 const VerticalLine = styled.div`
@@ -169,8 +175,6 @@ const MiniLabel = styled.span`
   background: rgba(49, 130, 246, 0.06);
 `;
 
-const ProjectInline = styled.div``;
-
 const ProjectCard = styled.div`
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -292,7 +296,6 @@ export const Experience: React.FC = () => {
       </Description>
 
       <TimelineWrap
-        as={motion.div}
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -326,12 +329,10 @@ export const Experience: React.FC = () => {
                 </TimelineCard>
 
                 {relatedProjects.map((p, pIdx) => (
-                  <ProjectInline key={`${idx}-${pIdx}`}>
+                  <div key={`${idx}-${pIdx}`}>
                     <ProjectCard>
                       <ProjectThumb>
-                        {p.thumbnail ? (
-                          <img src={p.thumbnail} alt={p.title} />
-                        ) : null}
+                        {p.thumbnail ? <img src={p.thumbnail} alt={p.title} /> : null}
                       </ProjectThumb>
 
                       <ProjectGlass>
@@ -339,14 +340,14 @@ export const Experience: React.FC = () => {
                         <ProjectDesc>{p.description}</ProjectDesc>
 
                         <TagRow>
-                          {p.tags?.map((tag, ti) => (
+                          {(p.tags ?? []).map((tag: string, ti: number) => (
                             <Tag key={ti}>#{tag}</Tag>
                           ))}
                         </TagRow>
 
                         <Actions>
                           {Array.isArray(p.githubUrl) ? (
-                            p.githubUrl.map((url, ui) => (
+                            p.githubUrl.map((url: string, ui: number) => (
                               <LinkButton
                                 key={ui}
                                 href={url}
@@ -370,7 +371,7 @@ export const Experience: React.FC = () => {
                         </Actions>
                       </ProjectGlass>
                     </ProjectCard>
-                  </ProjectInline>
+                  </div>
                 ))}
               </ContentStack>
             </Item>
@@ -380,3 +381,6 @@ export const Experience: React.FC = () => {
     </Section>
   );
 };
+
+// ✅ import { Experience } 로도, import Experience 로도 둘 다 되게 export 해둡니다.
+export default Experience;

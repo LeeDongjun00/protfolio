@@ -1,18 +1,9 @@
+// src/constants/data.ts
 import type React from 'react';
 
-import {
-  FaLaptopCode,
-  FaDatabase,
-  FaCloud,
-  FaBook,
-  FaComments,
-  FaLightbulb,
-  FaJava,
-  FaReact,
-  FaDocker,
-  FaAws,
-} from 'react-icons/fa';
-
+import { FaLaptopCode, FaDatabase, FaCloud } from 'react-icons/fa';
+import { FaBook, FaComments, FaLightbulb } from 'react-icons/fa';
+import { FaJava, FaReact, FaDocker, FaAws } from 'react-icons/fa';
 import {
   SiSpringboot,
   SiJavascript,
@@ -22,10 +13,6 @@ import {
   SiSwagger,
   SiAxios,
 } from 'react-icons/si';
-
-/* =========================
-   TYPES
-========================= */
 /** ✅ 기존 이미지 경로(string) 방식도 살리고, ✅ react-icons 컴포넌트도 허용 */
 export type IconLike = string | React.ComponentType;
 
@@ -83,7 +70,7 @@ export interface OtherExperience {
 }
 
 /* =========================
-   INTRO
+   Hero
 ========================= */
 export const introData = {
   headline: ['" 아이디어를 코드로 증명하는 개발자 "', '이동준입니다'],
@@ -96,15 +83,11 @@ export const introData = {
     { name: 'React', icon: FaReact, color: '#61DAFB' },
     { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
     { name: 'Oracle SQL', icon: SiOracle, color: '#F80000' },
-
-    // ✅ 만약 “어딘가에서 이미지(string)로 렌더링”하고 있어도 죽지 않게 하려면
-    // 아래처럼 이미지 경로 방식으로 다시 바꿔도 됨 (둘 중 택1)
-    // { name: 'Java', icon: '/assets/java_logo.png' },
-  ] as TechStack[],
+  ] satisfies TechStack[],
 };
 
 /* =========================
-   WHAT I DO
+   What I Do
 ========================= */
 export const whatIDoData: WhatIDo[] = [
   {
@@ -128,7 +111,7 @@ export const whatIDoData: WhatIDo[] = [
 ];
 
 /* =========================
-   TIMELINE
+   Timeline
 ========================= */
 export const timelineData: TimelineItem[] = [
   {
@@ -170,8 +153,6 @@ export const timelineData: TimelineItem[] = [
 ];
 
 /* =========================
-   PROJECTS
-========================= */
 export const projectsData: Project[] = [
   {
     title: '전자 옷장 및 일정에 맞는 코디 앱(MODE)',
@@ -238,6 +219,7 @@ export const otherExperienceData: OtherExperience[] = [
 
 /* =========================
    CORE VALUES
+   Core Values (기존 그대로)
 ========================= */
 export const coreValuesData: CoreValue[] = [
   {
@@ -368,3 +350,59 @@ export const skillsData: SkillCategory[] = [
   },
 ];
 
+/* =========================
+   Projects
+export const projectsData: Project[] = [
+  {
+    title: '컨텐츠 리뷰 사이트 프로젝트(Review Tag)',
+    thumbnail: '/assets/review_tag_main.png',
+    description:
+      'Spring Boot와 React를 활용하여 RESTful 아키텍처를 구현하고, 컨텐츠 퀴즈와 관리자 페이지, 랭킹 페이지를 구현하였습니다.',
+    tags: ['Java', 'Spring Boot', 'React', 'JavaScript', 'Axios', 'Bootstrap', 'Oracle SQL'],
+    githubUrl: [
+      'https://github.com/wantraiseapomeranian/reviewTag-be.git',
+      'https://github.com/wantraiseapomeranian/reviewTag-fe.git',
+    ],
+  },
+  {
+    title: '개인 쇼핑몰 프로젝트(King Heart)',
+    thumbnail: '/assets/review_tag_main.png',
+    description:
+      'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 장바구니 기능과 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
+    tags: ['Java', 'Spring Boot', 'JSP', 'Ajax', 'jQuery', 'Oracle SQL'],
+    githubUrl: 'https://github.com/wantraiseapomeranian/kingHeart.git',
+  },
+];
+
+export const featuredProjectsDescription =
+  '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
+
+export const otherExperienceDescription =
+  '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
+
+export const otherExperienceData: OtherExperience[] = [
+  {
+    title: 'TDB_Server(캡스톤)',
+    summary: 'IoT 하드웨어와 모바일 앱을 연결하는 하이브리드 아키텍처 기반의 NestJS 백엔드 서버',
+    highlights: [
+      'React Native 앱과 Raspberry Pi 하드웨어 클라이언트 간의 실시간 데이터 동기화 처리',
+      'Gemini CLI 및 AI 도구(Cursor)를 활용한 워크플로우 최적화 및 빠른 기능 구현',
+      '타입 안정성을 위한 TypeScript 도입 및 RESTful API 설계',
+      'MySQL 데이터베이스를 활용한 약물 관리 및 사용자 데이터 처리 시스템 구축',
+    ],
+    techStack: ['NestJS', 'TypeScript', 'RESTful API', 'MySQL', 'Raspberry Pi', 'Gemini CLI', 'cursor'],
+    githubUrl: 'https://github.com/wantraiseapomeranian/TDB_Server.git',
+  },
+  {
+    title: 'CRP_Server(캡스톤)',
+    summary: 'ExpressJS 기반의 확장 가능한 RESTful API 서버 및 WebSocket 실시간 통신 구현',
+    highlights: [
+      'Express.js 프레임워크를 활용한 모듈화된 백엔드 아키텍처 설계',
+      'RESTful API 설계 원칙을 준수한 엔드포인트 구현 및 문서화',
+      'WebSocket을 통한 실시간 양방향 통신 기능 구현',
+      'MySQL 데이터베이스 설계 및 쿼리 최적화를 통한 성능 개선',
+    ],
+    techStack: ['ExpressJS', 'JavaScript', 'REST API', 'WebSocket', 'MySQL'],
+    githubUrl: 'https://github.com/wantraiseapomeranian/CRP_Server.git',
+  },
+];
