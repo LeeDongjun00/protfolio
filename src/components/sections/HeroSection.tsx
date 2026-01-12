@@ -1,5 +1,6 @@
 import type React from 'react';
 import styled from 'styled-components';
+import type React from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '../common/Card';
 import { introData, whatIDoData, timelineData } from '../../constants/data';
@@ -14,7 +15,7 @@ const Section = styled.section`
   }
 `;
 
-/* ✅ 위 기술 스택 아이콘 (react-icons + 색 유지) */
+/* 위 기술 스택 아이콘  */
 const TechIcon = styled.div<{ $color?: string }>`
   font-size: 48px;
   color: ${({ $color, theme }) => $color || theme.colors.primary};
