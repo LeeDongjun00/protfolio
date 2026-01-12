@@ -10,7 +10,6 @@ import { HiArrowUpRight } from 'react-icons/hi2';
 import { timelineData, projectsData, featuredProjectsDescription } from '../../constants/data';
 
 /**
- * ✅ 목적: 타임라인 + 프로젝트를 "한 흐름"으로 보여주는 섹션
  * - timelineData 각 항목 아래에 projectsData 카드(썸네일+설명+태그+깃허브) 끼워 넣기
  * - 매핑은 EXPERIENCE_PROJECT_MAP만 바꾸면 됨
  */

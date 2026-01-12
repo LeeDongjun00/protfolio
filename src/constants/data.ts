@@ -132,22 +132,22 @@ export const whatIDoData: WhatIDo[] = [
 ========================= */
 export const timelineData: TimelineItem[] = [
   {
-    date: '2025.11 - 2025.12',
+    date: '2025.12 - 2026.01',
     title: 'Flutter 팀 프로젝트(패션관리 앱)',
     description:
-      '풀스택 개발자로 참여하여 Spring Boot 와 React를 사용하여 RESTful API를 구현하고, 컨텐츠 퀴즈 기능과 관리자 기능, 랭킹 페이지를 구현하였습니다.',
+      'Flutter와 Firebase를 활용하여 계층 분리를 고려한 구조로 앱을 개발하고, Firestore 기반 데이터 모델링과 상태 흐름 제어를 통해 일정,룩북,옷장 기능을 구현하였습니다.',
   },
   {
-    date: '2025.10 - 2025.11',
+    date: '2025.11 - 2025.12',
     title: 'React 개인 프로젝트(취미 SNS)',
     description:
-      '풀스택 개발자로 참여하여 Spring boot로 백엔드를 구축하고 JSP를 통해 화면을 전송하는 MVC 패턴을 익혔고, 장바구니 기능 및 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
+      'React와 Node.js(Express), MySQL을 활용하여 RESTful 아키텍처 기반의 SNS 서비스를 개발하고, 피드·댓글·팔로우·알림 기능과 사용자 행동 로그를 반영한 랭킹 및 추천 로직을 구현하였습니다..',
   },
   {
     date: '2025.10 - 2025.11',
     title: 'Spring 팀 프로젝트(여행 계획 웹사이트)',
     description:
-      '풀스택 개발자로 참여하여 Spring boot로 백엔드를 구축하고 JSP를 통해 화면을 전송하는 MVC 패턴을 익혔고, 장바구니 기능 및 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
+      'Spring Boot와 JSP를 활용한 MVC 아키텍처 기반의 여행 플랫폼을 개발하여, 사용자 입력 중심의 여행 일정 생성 로직과 Oracle DB 연동을 통한 예약·데이터 관리 흐름을 구현하였습니다.',
   },
   {
     date: '2025.07 - 2025.12',
@@ -168,6 +168,73 @@ export const timelineData: TimelineItem[] = [
       "'CRP_Server'는 ExpressJS 프레임워크를 사용하고 JavaScript로 작성된 백엔드 프로젝트입니다. RESTful API를 구현해 백엔드의 기초를 구현했습니다.",
   },
 ];
+
+/* =========================
+   PROJECTS
+========================= */
+export const projectsData: Project[] = [
+  {
+    title: '전자 옷장 및 일정에 맞는 코디 앱(MODE)',
+    thumbnail: '/assets/project_flutter.png',
+    description:
+      'Flutter와 Firebase를 활용하여 계층 분리를 고려한 구조로 앱을 개발하고, Firestore 기반 데이터 모델링과 상태 흐름 제어를 통해 일정,룩북,옷장 기능을 구현하였습니다.',
+    tags: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'Firebase Auth', 'Firebase Storage'],
+    githubUrl: [
+      'https://github.com/wantraiseapomeranian/reviewTag-be.git',
+    ],
+  },
+  {
+    title: '취미 기반 SNS 웹사이트(HobbyWave)',
+    thumbnail: '/assets/project_react.png',
+    description:
+      'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 장바구니 기능과 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
+    tags: ['React', 'Node.js', 'Express', 'REST API', 'MySQL', 'JWT', 'AWS'],
+    githubUrl: 'https://github.com/wantraiseapomeranian/kingHeart.git',
+  },
+  {
+    title: '여행 플랫폼(아임레디)',
+    thumbnail: '/assets/review_tag_main.png',
+    description:
+      'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 여행 예약 기능을 구현하였습니다.',
+    tags: ['Spring Boot', 'JSP', 'MyBatis', 'Oracle SQL', 'MVC Pattern', 'Kakao Map API'],
+    githubUrl: 'https://github.com/wantraiseapomeranian/kingHeart.git',
+  },
+];
+
+
+export const featuredProjectsDescription =
+  '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
+
+export const otherExperienceDescription =
+  '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
+
+export const otherExperienceData: OtherExperience[] = [
+  {
+    title: 'TDB_Server(캡스톤)',
+    summary: 'IoT 하드웨어와 모바일 앱을 연결하는 하이브리드 아키텍처 기반의 NestJS 백엔드 서버',
+    highlights: [
+      'React Native 앱과 Raspberry Pi 하드웨어 클라이언트 간의 실시간 데이터 동기화 처리',
+      'Gemini CLI 및 AI 도구(Cursor)를 활용한 워크플로우 최적화 및 빠른 기능 구현',
+      '타입 안정성을 위한 TypeScript 도입 및 RESTful API 설계',
+      'MySQL 데이터베이스를 활용한 약물 관리 및 사용자 데이터 처리 시스템 구축',
+    ],
+    techStack: ['NestJS', 'TypeScript', 'RESTful API', 'MySQL', 'Raspberry Pi', 'Gemini CLI', 'cursor'],
+    githubUrl: 'https://github.com/wantraiseapomeranian/TDB_Server.git',
+  },
+  {
+    title: 'CRP_Server(캡스톤)',
+    summary: 'ExpressJS 기반의 확장 가능한 RESTful API 서버 및 WebSocket 실시간 통신 구현',
+    highlights: [
+      'Express.js 프레임워크를 활용한 모듈화된 백엔드 아키텍처 설계',
+      'RESTful API 설계 원칙을 준수한 엔드포인트 구현 및 문서화',
+      'WebSocket을 통한 실시간 양방향 통신 기능 구현',
+      'MySQL 데이터베이스 설계 및 쿼리 최적화를 통한 성능 개선',
+    ],
+    techStack: ['ExpressJS', 'JavaScript', 'REST API', 'WebSocket', 'MySQL'],
+    githubUrl: 'https://github.com/wantraiseapomeranian/CRP_Server.git',
+  },
+];
+
 
 /* =========================
    CORE VALUES
@@ -191,7 +258,7 @@ export const coreValuesData: CoreValue[] = [
 ];
 
 /* =========================
-   ABOUT (✅ 기존 컴포넌트가 import하면 안 죽도록 복구)
+   ABOUT
 ========================= */
 export const aboutData = {
   quote: '데이터의 흐름을 꿰뚫고, 견고한 서비스 아키텍처를 설계합니다',
@@ -301,60 +368,3 @@ export const skillsData: SkillCategory[] = [
   },
 ];
 
-/* =========================
-   PROJECTS
-========================= */
-export const projectsData: Project[] = [
-  {
-    title: '컨텐츠 리뷰 사이트 프로젝트(Review Tag)',
-    thumbnail: '/assets/review_tag_main.png',
-    description:
-      'Spring Boot와 React를 활용하여 RESTful 아키텍처를 구현하고, 컨텐츠 퀴즈와 관리자 페이지, 랭킹 페이지를 구현하였습니다.',
-    tags: ['Java', 'Spring Boot', 'React', 'JavaScript', 'Axios', 'Bootstrap', 'Oracle SQL'],
-    githubUrl: [
-      'https://github.com/wantraiseapomeranian/reviewTag-be.git',
-      'https://github.com/wantraiseapomeranian/reviewTag-fe.git',
-    ],
-  },
-  {
-    title: '개인 쇼핑몰 프로젝트(King Heart)',
-    thumbnail: '/assets/review_tag_main.png',
-    description:
-      'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 장바구니 기능과 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
-    tags: ['Java', 'Spring Boot', 'JSP', 'Ajax', 'jQuery', 'Oracle SQL'],
-    githubUrl: 'https://github.com/wantraiseapomeranian/kingHeart.git',
-  },
-];
-
-export const featuredProjectsDescription =
-  '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
-
-export const otherExperienceDescription =
-  '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
-
-export const otherExperienceData: OtherExperience[] = [
-  {
-    title: 'TDB_Server(캡스톤)',
-    summary: 'IoT 하드웨어와 모바일 앱을 연결하는 하이브리드 아키텍처 기반의 NestJS 백엔드 서버',
-    highlights: [
-      'React Native 앱과 Raspberry Pi 하드웨어 클라이언트 간의 실시간 데이터 동기화 처리',
-      'Gemini CLI 및 AI 도구(Cursor)를 활용한 워크플로우 최적화 및 빠른 기능 구현',
-      '타입 안정성을 위한 TypeScript 도입 및 RESTful API 설계',
-      'MySQL 데이터베이스를 활용한 약물 관리 및 사용자 데이터 처리 시스템 구축',
-    ],
-    techStack: ['NestJS', 'TypeScript', 'RESTful API', 'MySQL', 'Raspberry Pi', 'Gemini CLI', 'cursor'],
-    githubUrl: 'https://github.com/wantraiseapomeranian/TDB_Server.git',
-  },
-  {
-    title: 'CRP_Server(캡스톤)',
-    summary: 'ExpressJS 기반의 확장 가능한 RESTful API 서버 및 WebSocket 실시간 통신 구현',
-    highlights: [
-      'Express.js 프레임워크를 활용한 모듈화된 백엔드 아키텍처 설계',
-      'RESTful API 설계 원칙을 준수한 엔드포인트 구현 및 문서화',
-      'WebSocket을 통한 실시간 양방향 통신 기능 구현',
-      'MySQL 데이터베이스 설계 및 쿼리 최적화를 통한 성능 개선',
-    ],
-    techStack: ['ExpressJS', 'JavaScript', 'REST API', 'WebSocket', 'MySQL'],
-    githubUrl: 'https://github.com/wantraiseapomeranian/CRP_Server.git',
-  },
-];
