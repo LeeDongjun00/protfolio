@@ -23,7 +23,8 @@ function App() {
       <Experience />
       <AboutSection />
       <SkillsSection />
-      <ProjectsSection />
+      <TroubleShooting />
+      <OtherExperience />
     </ThemeProvider>
   );
 }

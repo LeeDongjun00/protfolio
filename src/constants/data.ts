@@ -12,7 +12,11 @@ import {
   SiOracle,
   SiSwagger,
   SiAxios,
+  SiFlutter,
+  SiMysql,
 } from 'react-icons/si';
+/* react-icons 컴포넌트도 허용 */
+export type IconLike = string | React.ComponentType<any>;
 /** ✅ 기존 이미지 경로(string) 방식도 살리고, ✅ react-icons 컴포넌트도 허용 */
 export type IconLike = string | React.ComponentType;
 
@@ -24,7 +28,7 @@ export interface TechStack {
 
 export interface WhatIDo {
   title: string;
-  icon: React.ComponentType;
+  icon: React.ComponentType<any>;
   description: string;
 }
 
@@ -36,13 +40,13 @@ export interface TimelineItem {
 
 export interface CoreValue {
   title: string;
-  icon: React.ComponentType;
+  icon: React.ComponentType<any>;
   description: string;
 }
 
 export interface Skill {
   name: string;
-  icon: React.ComponentType;
+  icon: React.ComponentType<any>;
   percentage: number;
   description: string;
   color?: string;
@@ -69,6 +73,25 @@ export interface OtherExperience {
   githubUrl?: string;
 }
 
+/* ✅ What I'm Good At 타입 추가 */
+export interface Strength {
+  title: string;
+  icon: React.ComponentType<any>;
+  description: string;
+}
+
+/* ✅ TroubleShooting 타입 추가 */
+export interface TroubleShootingItem {
+  project: string;
+  title: string;
+  tag?: string;
+  issue: string;
+  cause: string;
+  solution: string;
+  result: string;
+  insight?: string;
+}
+
 /* =========================
    Hero
 ========================= */
@@ -77,8 +100,8 @@ export const introData = {
   subtext:
     '구조와 흐름을 이해해 근본적인 해결을 고민합니다. 문제의 원인을 먼저 파악하고, 현재뿐 아니라 이후의 확장과 사용자 경험까지 연결되는 설계를 지향합니다.',
   techStack: [
-    // ✅ react-icons 버전(현재 HeroSection이 이 방식이면 바로 됨)
     { name: 'Java', icon: FaJava, color: '#ED8B00' },
+    { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
     { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
     { name: 'React', icon: FaReact, color: '#61DAFB' },
     { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
@@ -136,7 +159,7 @@ export const timelineData: TimelineItem[] = [
     date: '2025.07 - 2025.12',
     title: 'MSA기반 플러터(Dart)활용 자바(JAVA)프론트엔드 백엔드 풀스택 웹(앱)개발 과정 수료',
     description:
-      'Java/Spring 생태계 전반, React 기반의 웹 개발 기술을 학습하고 여러 번의 팀 프로젝트를 통해 협업 능력 및 소통 능력을 길렀습니다.',
+      'Java/Spring 생태계 전반, React 기반의 웹 개발 기술을 학습하고 여러 번의 팀 프로젝트를 통해 협업 능력 및 소통 능력를 길렀습니다.',
   },
   {
     date: '2025.04 - 2025.12',
@@ -160,34 +183,31 @@ export const projectsData: Project[] = [
     description:
       'Flutter와 Firebase를 활용하여 계층 분리를 고려한 구조로 앱을 개발하고, Firestore 기반 데이터 모델링과 상태 흐름 제어를 통해 일정,룩북,옷장 기능을 구현하였습니다.',
     tags: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'Firebase Auth', 'Firebase Storage'],
-    githubUrl: [
-      'https://github.com/wantraiseapomeranian/reviewTag-be.git',
-    ],
+    githubUrl: ['https://github.com/yeseul1008/FlutterTeamProject.git'],
   },
   {
     title: '취미 기반 SNS 웹사이트(HobbyWave)',
     thumbnail: '/assets/project_react.png',
     description:
-      'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 장바구니 기능과 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
+      'React와 Node.js(Express), MySQL을 활용하여 RESTful 아키텍처 기반의 SNS 서비스를 개발하고, 피드·댓글·팔로우·알림 기능과 사용자 행동 로그를 반영한 랭킹 및 추천 로직을 구현하였습니다.',
     tags: ['React', 'Node.js', 'Express', 'REST API', 'MySQL', 'JWT', 'AWS'],
-    githubUrl: 'https://github.com/wantraiseapomeranian/kingHeart.git',
+    githubUrl: 'https://github.com/LeeDongjun00/kidultSNS.git',
   },
   {
     title: '여행 플랫폼(아임레디)',
-    thumbnail: '/assets/review_tag_main.png',
+    thumbnail: '/assets/project_spring.png',
     description:
-      'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 여행 예약 기능을 구현하였습니다.',
+      'Spring Boot와 JSP를 활용한 MVC 아키텍처 기반의 여행 플랫폼을 개발하여 사용자 입력 중심의 여행 일정 생성 로직과 Oracle DB 연동 흐름을 구현하였습니다.',
     tags: ['Spring Boot', 'JSP', 'MyBatis', 'Oracle SQL', 'MVC Pattern', 'Kakao Map API'],
-    githubUrl: 'https://github.com/wantraiseapomeranian/kingHeart.git',
+    githubUrl: 'https://github.com/LeeDongjun00/Spring_TeamProject.git',
   },
 ];
-
 
 export const featuredProjectsDescription =
   '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
 
 export const otherExperienceDescription =
-  '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
+  '성장하기 위해 다양한 경험을 쌓고 노력합니다.';
 
 export const otherExperienceData: OtherExperience[] = [
   {
@@ -216,26 +236,49 @@ export const otherExperienceData: OtherExperience[] = [
   },
 ];
 
-
 /* =========================
    CORE VALUES
    Core Values (기존 그대로)
 ========================= */
 export const coreValuesData: CoreValue[] = [
   {
-    title: '전체적인 계획 수립',
-    icon: FaBook,
-    description: '프로젝트의 전체적인 계획을 수립하고 일정을 관리하여 프로젝트를 원활하게 진행합니다.',
+    title: '기능보다 흐름을 먼저 고민합니다',
+    icon: FaDatabase,
+    description: '단일 기능 구현에 그치지 않고, 사용자 흐름과 데이터 이동을 함께 고려하며 설계합니다.',
   },
   {
-    title: '원활한 소통',
-    icon: FaComments,
-    description: '명확한 커뮤니케이션을 통해 팀과의 협업을 원활하게 이끌어갑니다.',
+    title: '동작하는 결과물로 증명합니다',
+    icon: FaLaptopCode,
+    description: '아이디어에 그치지 않고, 구현·수정·개선까지 완성되는 결과물을 만드는 데 집중합니다.',
   },
   {
-    title: '문제 해결력',
+    title: '문제를 구조적으로 이해합니다',
     icon: FaLightbulb,
-    description: '원인을 파악하고 문제를 해결하는 과정에서 성장하고 있습니다.',
+    description: '오류를 단순히 해결하는 데서 멈추지 않고, 원인을 분석해 반복을 줄이는 방향을 고민합니다.',
+  },
+];
+
+/* =========================
+   WHAT I'M GOOD AT
+========================= */
+export const strengthsData: Strength[] = [
+  {
+    title: '협업 능력',
+    icon: FaUsers,
+    description:
+      '팀 프로젝트에서 의견이 갈릴 때 각자의 의도와 우선순위를 정리해 공통된 방향으로 조율합니다. 기술적 근거를 바탕으로 원활한 협업을 만들어갑니다.',
+  },
+  {
+    title: '학습 및 실행력',
+    icon: FaBolt,
+    description:
+      '프로젝트에 필요한 기술이 생기면 빠르게 학습해 실제 기능 구현에 바로 적용합니다. 배움이 결과로 이어지는 과정을 중요하게 생각합니다.',
+  },
+  {
+    title: '구조적 사고',
+    icon: FaProjectDiagram,
+    description:
+      '기능이 늘어나더라도 구조가 복잡해지지 않도록 역할과 흐름을 나누어 전체 구조를 정리합니다. 유지보수와 확장을 고려한 설계를 지향합니다.',
   },
 ];
 
@@ -243,12 +286,12 @@ export const coreValuesData: CoreValue[] = [
    ABOUT
 ========================= */
 export const aboutData = {
-  quote: '데이터의 흐름을 꿰뚫고, 견고한 서비스 아키텍처를 설계합니다',
+  quote: '데이터 흐름을 이해하고, 안정적인 서비스를 구현하는 개발자입니다',
   information: {
     name: '이동준',
     education: '경동대학교 컴퓨터공학과',
     contact: 'dongjun032061@gmail.com',
-    notion: 'https://github.com/jun-000224',
+    notion: 'https://github.com/LeeDongjun00',
   },
 };
 
@@ -351,6 +394,49 @@ export const skillsData: SkillCategory[] = [
 ];
 
 /* =========================
+export const troubleShootingData: TroubleShootingItem[] = [
+  {
+    project: 'MODE (코디 다이어리)',
+    title: '캡처 이미지에 편집 UI가 함께 저장되는 문제',
+    tag: 'Flutter / RepaintBoundary',
+    issue:
+      '코디 결과 이미지를 저장했는데, 테두리/삭제 버튼 등 편집용 UI가 결과 이미지에 그대로 포함되는 문제가 발생했습니다.',
+    cause:
+      '캡처는 특정 UI만 선택적으로 가져오는 것이 아니라, 해당 시점에 렌더링된 위젯 트리 전체를 이미지로 생성합니다. 편집 UI와 결과물이 같은 렌더링 트리에 있었던 것이 핵심 원인이었습니다.',
+    solution:
+      '캡처 순간에만 편집 UI를 렌더 트리에서 제외하도록 상태를 분리했습니다. 캡처 시작 시 편집 UI를 숨기고 → 캡처 완료 후 다시 복원하는 흐름으로 설계했습니다.',
+    result:
+      '저장 이미지에는 코디 결과만 깔끔하게 남았고, 이후 룩북/일정 프리뷰 등 동일 패턴 기능에 재사용할 수 있는 해결 방식으로 확장했습니다.',
+    insight: 'UX는 디자인 문제가 아니라, 개발자가 매 순간 내리는 판단의 기준이라는 걸 체감했습니다.',
+  },
+  {
+    project: '준비완료 (여행 추천/코스)',
+    title: 'TOUR API 데이터를 DB에 전부 적재할지 판단 이슈',
+    tag: 'Tour API / On-demand',
+    issue:
+      '숙박/관광/식당 데이터가 방대해, API 응답을 그대로 DB에 적재하면 관리/성능 측면에서 비효율이 예상되었습니다.',
+    cause:
+      '포트폴리오 규모에서 “전체 적재”는 과하고, 실시간 조회 가능한 외부 API는 DB가 아니라 “필요할 때 조회”하는 전략이 더 적절했습니다.',
+    solution:
+      'CONTENT_ID, CONTENT_TYPE_ID 같은 최소 식별자만 DB에 저장하고, 상세 정보는 필요 시 TOUR API를 호출하는 온디맨드 구조로 변경했습니다.',
+    result:
+      'DB 용량/관리 부담을 줄이고, 추천 로직은 가중치 계산과 속성 관리에 집중할 수 있도록 역할을 분리했습니다.',
+    insight:
+      '기능 구현을 넘어, 외부 API와 DB의 역할을 분리해 프로젝트에 맞는 데이터 전략을 고민하는 시야를 갖게 됐습니다.',
+  },
+  {
+    project: '준비완료 (여행 추천/코스)',
+    title: '회원 탈퇴 시 리뷰/기록 데이터 처리 전략',
+    tag: 'Data Integrity / Privacy',
+    issue:
+      '회원 탈퇴 시 유저 정보를 삭제하면 리뷰까지 사라져 서비스 신뢰도가 떨어지고, 반대로 유지하면 개인정보/정합성 문제가 생길 수 있었습니다.',
+    cause:
+      '연관 데이터(리뷰)는 서비스 가치 데이터이고, 사용자 식별 정보는 개인정보이므로 동일한 삭제 전략을 적용하면 문제가 발생합니다.',
+    solution:
+      '회원 엔티티는 논리 삭제(탈퇴 상태 전환)로 처리하고, 식별 가능한 정보(계정/닉네임 등)는 마스킹했습니다. 리뷰는 익명화된 상태로 유지했습니다.',
+    result:
+      '서비스 정보는 유지하면서도 개인정보/정합성 이슈를 줄였고, 이후 프로젝트에서도 “삭제/유지/익명화” 판단 기준을 갖게 됐습니다.',
+    insight: '엔티티 삭제는 연관 데이터의 성격에 따라 전략을 분리해야 한다는 기준을 정립했습니다.',
    Projects
 export const projectsData: Project[] = [
   {

@@ -1,6 +1,6 @@
 // src/components/sections/Experience.tsx
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 
 import { Card } from '../common/Card';
@@ -69,22 +69,21 @@ const VerticalLine = styled.div`
   }
 `;
 
-const Item = styled(motion.div)`
-  position: relative;
-  padding-bottom: 38px;
-
-  &:last-child {
-    padding-bottom: 0;
-  }
+/** 맨 위 파란 동그라미 깜빡이게 펄스효과 */
+const pulse = keyframes`
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.15); opacity: 0.65; }
+  100% { transform: scale(1); opacity: 1; }
 `;
 
-const Point = styled.div`
+const TopPoint = styled.div`
   position: absolute;
-  left: 8px;
-  top: 6px;
+  left: 9px;
+  top: -15px;
   width: 20px;
   height: 20px;
-  z-index: 2;
+  z-index: 3;
+  animation: ${pulse} 1.2s ease-in-out infinite;
 
   &::before {
     content: '';
@@ -111,6 +110,15 @@ const Point = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     left: 6px;
+  }
+`;
+
+const Item = styled(motion.div)`
+  position: relative;
+  padding-bottom: 70px;
+
+  &:last-child {
+    padding-bottom: 0;
   }
 `;
 
@@ -177,9 +185,13 @@ const MiniLabel = styled.span`
 
 const ProjectCard = styled.div`
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  /*  오른쪽 카드 너비 조절 */
+  grid-template-columns: 1.3fr 0.8fr;
   gap: 0;
-  min-height: 280px;
+
+  /* 오른쪽 카드 높이 조절 */
+  min-height: 380px;
+
   position: relative;
   overflow: visible;
   border-radius: 18px;
@@ -192,7 +204,10 @@ const ProjectCard = styled.div`
 
 const ProjectThumb = styled.div`
   position: relative;
-  min-height: 260px;
+
+  /* ✅ 이미지 영역 높이 키움 */
+  min-height: 320px;
+
   border-radius: 18px;
   overflow: hidden;
   background: linear-gradient(
@@ -217,18 +232,29 @@ const ProjectThumb = styled.div`
 `;
 
 const ProjectGlass = styled.div`
-  background: rgba(255, 255, 255, 0.88);
+  /* ✅ 흰 사진 많아서 경계 명확히: 살짝 더 불투명 + 파란 테두리 */
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+
   border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+
+  /* ✅ 높이/여백 */
+  padding: 22px;
+  min-height: 320px;
+
+  /* ✅ 파란 테두리(은은) */
+  border: 1px solid rgba(49, 130, 246, 0.35);
+
+  /* ✅ 기존 그림자 + 얇은 파란 외곽 강조 */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(49, 130, 246, 0.08);
+
   margin-left: -18px;
   align-self: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     margin-left: 0;
     margin-top: -16px;
+    min-height: auto;
   }
 `;
 
@@ -267,6 +293,7 @@ const Tag = styled.span`
 
 const Actions = styled.div`
   display: flex;
+  justify-content : center;
   gap: 10px;
   flex-wrap: wrap;
 `;
@@ -284,7 +311,7 @@ const itemVariants = {
 export const Experience: React.FC = () => {
   return (
     <Section id="experience">
-      <SectionTitle $align="center">Education & Experience</SectionTitle>
+      <SectionTitle $align="center">&lt; Education & Experience /&gt;</SectionTitle>
 
       <Description
         initial={{ opacity: 0, y: 12 }}
@@ -302,30 +329,18 @@ export const Experience: React.FC = () => {
         viewport={{ once: true, amount: 0.2 }}
       >
         <VerticalLine />
+        <TopPoint />
 
         {timelineData.map((t, idx) => {
-          const projectIndexes = EXPERIENCE_PROJECT_MAP[idx] || [];
-          const relatedProjects = projectIndexes
-            .map((pi) => projectsData[pi])
-            .filter(Boolean);
+          const p = projectsData[idx];
 
           return (
-            <Item key={idx} variants={itemVariants}>
-              <Point />
-
+            <Item key={`${t.date}-${idx}`} variants={itemVariants}>
               <ContentStack>
                 <TimelineCard $shadow>
                   <Date>{t.date}</Date>
                   <Title>{t.title}</Title>
                   <Body>{t.description}</Body>
-
-                  {relatedProjects.length > 0 && (
-                    <LabelRow>
-                      <MiniLabel>
-                        <HiArrowUpRight /> PROJECT
-                      </MiniLabel>
-                    </LabelRow>
-                  )}
                 </TimelineCard>
 
                 {relatedProjects.map((p, pIdx) => (

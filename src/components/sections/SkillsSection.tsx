@@ -126,7 +126,7 @@ const skillCardVariants = {
 export const SkillsSection: React.FC = () => {
   return (
     <Section id="skills">
-      <SectionTitle $align="center">Skills</SectionTitle>
+      <SectionTitle $align="center">&lt;Skills /&gt;</SectionTitle>
       <SkillsContainer
         as={motion.div}
         variants={containerVariants}
