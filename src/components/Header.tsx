@@ -113,11 +113,13 @@ export const Header: React.FC = () => {
       transition={{ duration: 0.5 }}
     >
       <HeaderContent>
-        <Logo onClick={() => scrollToSection('hero')}>PORTFOLIO</Logo>
+        <Logo onClick={() => scrollToSection('hero')}>
+          &lt;dongjun /&gt;
+        </Logo>
         <NavList>
           <NavItem onClick={() => scrollToSection('about')}>About</NavItem>
           <NavItem onClick={() => scrollToSection('skills')}>Skills</NavItem>
-          <NavItem onClick={() => scrollToSection('projects')}>Projects</NavItem>
+          <NavItem onClick={() => scrollToSection('projects')}>Trouble Shoutting</NavItem>
         </NavList>
       </HeaderContent>
     </HeaderContainer>

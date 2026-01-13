@@ -7,6 +7,7 @@ import { AboutSection } from './components/sections/AboutSection';
 import { SkillsSection } from './components/sections/SkillsSection';
 import { ProjectsSection } from './components/sections/ProjectsSection';
 import { Experience } from './components/sections/Experience';
+import { TroubleShooting } from './components/sections/TroubleShutting';
  
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Experience />
       <AboutSection />
       <SkillsSection />
+      <TroubleShooting />
       <ProjectsSection />
     </ThemeProvider>
   );
