@@ -1,5 +1,7 @@
 import type React from 'react';
 import styled from 'styled-components';
+import type React from 'react';
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaGithub, FaReact, FaAws, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import { SiSpringboot, SiFlutter, SiOracle } from 'react-icons/si';
@@ -221,3 +223,5 @@ export const HeroSection: React.FC = () => {
     </Section>
   );
 };
+
+export default HeroSection;
