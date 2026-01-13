@@ -5,9 +5,9 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/sections/HeroSection';
 import { AboutSection } from './components/sections/AboutSection';
 import { SkillsSection } from './components/sections/SkillsSection';
-import { ProjectsSection } from './components/sections/ProjectsSection';
 import { Experience } from './components/sections/Experience';
-import { TroubleShooting } from './components/sections/TroubleShutting';
+import { TroubleShooting } from './components/sections/TroubleShooting';
+import { OtherExperience } from './components/sections/OtherExperienceSection';
  
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       <AboutSection />
       <SkillsSection />
       <TroubleShooting />
-      <ProjectsSection />
+      <OtherExperience />
     </ThemeProvider>
   );
 }

@@ -413,7 +413,6 @@ export const AboutSection: React.FC = () => {
         </QuoteText>
       </QuoteSection>
 
-      {/* ✅ Hero에 있던 What I Do 를 About으로 이동 */}
       <WhatIDoSection>
         <FlowTitle>
           <Highlight>기획부터 구현, 배포와 운영까지</Highlight> 전 과정을 설계하고 구현합니다.
@@ -445,9 +444,8 @@ export const AboutSection: React.FC = () => {
         </WhatIDoBackground>
       </WhatIDoSection>
 
-      {/* ✅ How I Work (세로) */}
       <HowIWorkSection>
-        <SectionTitle>How I Work</SectionTitle>
+        <SectionTitle>&lt;How I Work /&gt;</SectionTitle>
 
         <HowIWorkList
           as={motion.div}
@@ -475,9 +473,8 @@ export const AboutSection: React.FC = () => {
         </HowIWorkList>
       </HowIWorkSection>
 
-      {/* ✅ What I'm Good At (가로) */}
       <StrengthsSection>
-        <SectionTitle>What I’m Good At</SectionTitle>
+        <SectionTitle>&lt; What I’m Good At /&gt;</SectionTitle>
 
         <StrengthsGrid
           as={motion.div}

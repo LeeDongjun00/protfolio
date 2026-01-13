@@ -1,210 +1,223 @@
-// src/components/sections/Hero.tsx
-import styled from 'styled-components';
 import type React from 'react';
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaGithub } from 'react-icons/fa';
-import {
-  SiSpringboot,
-  SiReact,
-  SiFlutter,
-  SiOracle,
-  SiAmazonaws,
-} from 'react-icons/si';
+import { FaGithub, FaReact, FaAws, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
+import { SiSpringboot, SiFlutter, SiOracle } from 'react-icons/si';
+import { introData, aboutData } from '../../constants/data';
 
 /* =========================
-   SECTION
+   LAYOUT
 ========================= */
+
 const Section = styled.section`
-  padding: 140px 2rem 100px;
+  padding: 120px 2rem 80px;
   max-width: ${({ theme }) => theme.layout.maxWidth};
   margin: 0 auto;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 110px 1.5rem 80px;
-  }
 `;
 
-const HeroGrid = styled.div`
+const HeroCard = styled(motion.div)`
+  background: ${({ theme }) => theme.colors.gray.light};
+  border-radius: 28px;
+  padding: 44px;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  gap: 4rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
+  }
+`;
+
+const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+`;
+
+const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    align-items: flex-start;
   }
 `;
 
 /* =========================
-   LEFT
+   TEXT
 ========================= */
-const Left = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-`;
 
 const Name = styled.h1`
   font-size: 3rem;
   font-weight: 900;
   color: ${({ theme }) => theme.colors.primary};
-  letter-spacing: -0.02em;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 2.2rem;
-  }
+  margin: 0;
 `;
 
-const Role = styled.h2`
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #f97316; /* 포인트 오렌지 */
-`;
-
-const TechRow = styled.div`
-  display: flex;
-  gap: 1.2rem;
-  margin-top: 0.6rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    justify-content: center;
-  }
-`;
-
-const TechIcon = styled.div`
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.9);
-  display: grid;
-  place-items: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.primary};
-`;
-
-const Slogan = styled.p`
-  margin-top: 1.2rem;
+const Role = styled.div`
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
+  color: #f97316;
+`;
+
+const Slogan = styled.div`
+  margin-top: 14px;
+  font-size: 1.3rem;
+  font-weight: 900;
   color: ${({ theme }) => theme.colors.text.heading};
-  line-height: 1.6;
+`;
+
+const SubText = styled.p`
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: ${({ theme }) => theme.colors.text.body};
+  opacity: 0.9;
 `;
 
 /* =========================
-   ACTION
+   ICONS
 ========================= */
-const ActionRow = styled.div`
-  margin-top: 1.8rem;
-  display: flex;
-  gap: 1rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    justify-content: center;
+const TechRow = styled.div`
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+
+  svg {
+    font-size: 30px;
+  }
+`;
+
+/* =========================
+   PROFILE
+========================= */
+
+const PhotoFrame = styled.div`
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 
 const GithubButton = styled.a`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.9rem 1.6rem;
+  width: 250px;
+  padding: 12px 0;
   border-radius: 12px;
-  background: ${({ theme }) => theme.colors.primary};
+  background: #3b82f6;
   color: #fff;
-  font-weight: 700;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   text-decoration: none;
-  box-shadow: 0 12px 30px rgba(49, 130, 246, 0.35);
-  transition: all 0.25s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 36px rgba(49, 130, 246, 0.45);
+    background: #2563eb;
   }
 `;
 
 /* =========================
-   RIGHT
+   CONTACT (CARD OUTSIDE)
 ========================= */
-const Right = styled.div`
+
+const ContactBar = styled(motion.div)`
+  margin-top: 22px;
   display: flex;
-  justify-content: center;
+  gap: 28px;
+  padding-left: 8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
-const ProfileFrame = styled.div`
-  width: 240px;
-  height: 300px;
-  border-radius: 12px;
-  background: #fff;
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
-  display: grid;
-  place-items: center;
-`;
+const ContactItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: ${({ theme }) => theme.colors.text.body};
 
-const ProfileImage = styled.img`
-  width: 200px;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 6px;
+  svg {
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 /* =========================
    COMPONENT
 ========================= */
+
 export const HeroSection: React.FC = () => {
+  const githubUrl = aboutData.information.notion;
+
   return (
     <Section id="hero">
-      <HeroGrid>
-        {/* LEFT */}
-        <Left as={motion.div} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+      <HeroCard
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Left>
           <Name>Lee Dongjun</Name>
           <Role>Full-stack Developer</Role>
 
-          <TechRow>
-            <TechIcon title="Spring Boot">
-              <SiSpringboot />
-            </TechIcon>
-            <TechIcon title="React">
-              <SiReact />
-            </TechIcon>
-            <TechIcon title="Flutter">
-              <SiFlutter />
-            </TechIcon>
-            <TechIcon title="Oracle">
-              <SiOracle />
-            </TechIcon>
-            <TechIcon title="AWS">
-              <SiAmazonaws />
-            </TechIcon>
-          </TechRow>
-
           <Slogan>
-            “아이디어를 코드로 증명하고,<br />
-            서비스로 완성하는 개발자입니다”
+            “아이디어를 코드로 증명하고, 서비스로 완성하는 개발자입니다.”
           </Slogan>
 
-          <ActionRow>
-            <GithubButton
-              href="https://github.com/wantraiseapomeranian"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub />
-              GitHub
-            </GithubButton>
-          </ActionRow>
+          <SubText>{introData.subtext}</SubText>
+
+          <TechRow>
+            <SiSpringboot color="#6DB33F" />
+            <FaReact color="#61DAFB" />
+            <SiFlutter color="#02569B" />
+            <SiOracle color="#F80000" />
+            <FaAws color="#FF9900" />
+          </TechRow>
         </Left>
 
-        {/* RIGHT */}
-        <Right as={motion.div} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-          <ProfileFrame>
-            <ProfileImage src="/assets/identification.png" alt="프로필 사진" />
-          </ProfileFrame>
+        <Right>
+          <PhotoFrame>
+            <img src="/assets/identification.png" alt="profile" />
+          </PhotoFrame>
+
+          <GithubButton href={githubUrl} target="_blank" rel="noopener noreferrer">
+            <FaGithub /> GitHub
+          </GithubButton>
         </Right>
-      </HeroGrid>
+      </HeroCard>
+
+      {/* 연락처 - 카드 바깥 */}
+      <ContactBar
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.25 }}
+      >
+        <ContactItem>
+          <FaEnvelope />
+          {/* 여기에 이메일 입력 */}
+          dongjun032061@gmail.com
+        </ContactItem>
+
+        <ContactItem>
+          <FaPhoneAlt />
+          {/* 여기에 전화번호 입력 */}
+          010-8951-0249
+        </ContactItem>
+      </ContactBar>
     </Section>
   );
 };
