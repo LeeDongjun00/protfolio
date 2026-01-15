@@ -119,7 +119,7 @@ export const Header: React.FC = () => {
         <NavList>
           <NavItem onClick={() => scrollToSection('about')}>About</NavItem>
           <NavItem onClick={() => scrollToSection('skills')}>Skills</NavItem>
-          <NavItem onClick={() => scrollToSection('projects')}>Trouble Shooting</NavItem>
+          <NavItem onClick={() => scrollToSection('troubleshooting')}>Trouble Shooting</NavItem>
         </NavList>
       </HeaderContent>
     </HeaderContainer>
