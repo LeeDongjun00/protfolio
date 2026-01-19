@@ -1,29 +1,12 @@
-// src/components/sections/Experience.tsx
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
+import { FaGithub, FaBookOpen } from 'react-icons/fa';
 
 import { Card } from '../common/Card';
 import { LinkButton } from '../common/Button';
 import { SectionTitle } from '../common/SectionTitle';
-
-import { FaGithub } from 'react-icons/fa';
-import { HiArrowUpRight } from 'react-icons/hi2';
-
-import {
-  timelineData,
-  projectsData,
-  featuredProjectsDescription,
-} from '../../constants/data';
-
-/**
- * ✅ timeline index -> projects index 매핑
- * 여기만 바꾸면 "어떤 타임라인 아래에 어떤 프로젝트가 붙는지" 제어됩니다.
- */
-const EXPERIENCE_PROJECT_MAP: Record<number, number[]> = {
-  0: [0],
-  1: [1],
-};
+import { timelineData, projectsData, featuredProjectsDescription } from '../../constants/data';
 
 const Section = styled.section`
   padding: 80px 2rem;
@@ -50,9 +33,9 @@ const Description = styled(motion.p)`
   }
 `;
 
-const TimelineWrap = styled(motion.div)`
+const TimelineWrap = styled.div`
   position: relative;
-  padding-left: 52px; /* 라인/도트 영역 */
+  padding-left: 52px;
 `;
 
 const VerticalLine = styled.div`
@@ -69,7 +52,6 @@ const VerticalLine = styled.div`
   }
 `;
 
-/** 맨 위 파란 동그라미 깜빡이게 펄스효과 */
 const pulse = keyframes`
   0%   { transform: scale(1); opacity: 1; }
   50%  { transform: scale(1.15); opacity: 0.65; }
@@ -163,34 +145,13 @@ const Body = styled.p`
   opacity: 0.9;
 `;
 
-const LabelRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-`;
-
-const MiniLabel = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(49, 130, 246, 0.25);
-  color: ${({ theme }) => theme.colors.primary};
-  background: rgba(49, 130, 246, 0.06);
-`;
+const ProjectInline = styled.div``;
 
 const ProjectCard = styled.div`
   display: grid;
-  /*  오른쪽 카드 너비 조절 */
-  grid-template-columns: 1.3fr 0.8fr;
+  grid-template-columns: 1.25fr 0.75fr;
   gap: 0;
-
-  /* 오른쪽 카드 높이 조절 */
-  min-height: 380px;
+  min-height: 340px;
 
   position: relative;
   overflow: visible;
@@ -202,21 +163,32 @@ const ProjectCard = styled.div`
   }
 `;
 
+// 👇 [여기 수정됨] 테두리 디자인 변경!
 const ProjectThumb = styled.div`
   position: relative;
-
-  /* ✅ 이미지 영역 높이 키움 */
   min-height: 320px;
 
   border-radius: 18px;
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.primary} 0%,
-    #1e6fe8 100%
-  );
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary} 0%, #1e6fe8 100%);
+  
   margin-left: -12px;
+  
+  // ✅ 옵션 1: 은은한 네온 글로우 효과 (현재 적용됨)
+  border: 2px solid #374151; // 짙은 회색 테두리
+  box-shadow: 0 4px 25px ${({ theme }) => theme.colors.primary}40; // 파란색 빛 효과
+
+  /* // ✅ 옵션 2: 이중 테두리 효과 (쓰고 싶으면 위 두 줄 지우고 주석 해제)
+  border: 2px solid ${({ theme }) => theme.colors.primary}; // 안쪽 파란선
+  box-shadow: 0 0 0 4px #1f2937; // 바깥쪽 어두운선
+  */
+
+  // (선택) 마우스 올렸을 때 효과
+  transition: all 0.3s ease;
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 8px 40px ${({ theme }) => theme.colors.primary}80;
+  }
 
   img {
     width: 100%;
@@ -227,26 +199,19 @@ const ProjectThumb = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     margin-left: 0;
-    min-height: 220px;
+    min-height: 240px;
   }
 `;
 
 const ProjectGlass = styled.div`
-  /* ✅ 흰 사진 많아서 경계 명확히: 살짝 더 불투명 + 파란 테두리 */
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(18px) saturate(180%);
+  
+  border: 2px solid ${({ theme }) => theme.colors.primary};
 
   border-radius: 16px;
-
-  /* ✅ 높이/여백 */
-  padding: 22px;
-  min-height: 320px;
-
-  /* ✅ 파란 테두리(은은) */
-  border: 1px solid rgba(49, 130, 246, 0.35);
-
-  /* ✅ 기존 그림자 + 얇은 파란 외곽 강조 */
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(49, 130, 246, 0.08);
+  padding: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 
   margin-left: -18px;
   align-self: center;
@@ -254,7 +219,6 @@ const ProjectGlass = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     margin-left: 0;
     margin-top: -16px;
-    min-height: auto;
   }
 `;
 
@@ -293,9 +257,9 @@ const Tag = styled.span`
 
 const Actions = styled.div`
   display: flex;
-  justify-content : center;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const containerVariants = {
@@ -308,10 +272,10 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
-export const Experience: React.FC = () => {
+export const Education: React.FC = () => {
   return (
-    <Section id="experience">
-      <SectionTitle $align="center">&lt; Education & Experience /&gt;</SectionTitle>
+    <Section id="education">
+      <SectionTitle $align="center">Education & Experience</SectionTitle>
 
       <Description
         initial={{ opacity: 0, y: 12 }}
@@ -323,6 +287,7 @@ export const Experience: React.FC = () => {
       </Description>
 
       <TimelineWrap
+        as={motion.div}
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -343,8 +308,8 @@ export const Experience: React.FC = () => {
                   <Body>{t.description}</Body>
                 </TimelineCard>
 
-                {relatedProjects.map((p, pIdx) => (
-                  <div key={`${idx}-${pIdx}`}>
+                {p ? (
+                  <ProjectInline>
                     <ProjectCard>
                       <ProjectThumb>
                         {p.thumbnail ? <img src={p.thumbnail} alt={p.title} /> : null}
@@ -355,14 +320,15 @@ export const Experience: React.FC = () => {
                         <ProjectDesc>{p.description}</ProjectDesc>
 
                         <TagRow>
-                          {(p.tags ?? []).map((tag: string, ti: number) => (
+                          {p.tags?.map((tag, ti) => (
                             <Tag key={ti}>#{tag}</Tag>
                           ))}
                         </TagRow>
 
                         <Actions>
+                          {/* 1. 깃허브 버튼 */}
                           {Array.isArray(p.githubUrl) ? (
-                            p.githubUrl.map((url: string, ui: number) => (
+                            p.githubUrl.map((url, ui) => (
                               <LinkButton
                                 key={ui}
                                 href={url}
@@ -383,11 +349,22 @@ export const Experience: React.FC = () => {
                               <FaGithub /> GitHub
                             </LinkButton>
                           ) : null}
+
+                          {/* 2. 상세 리뷰 버튼 (MODE 프로젝트에만 표시) */}
+                          {p.title.includes("MODE") && (
+                            <LinkButton
+                              href="#"
+                              target="_self"
+                              $variant="outline"
+                            >
+                              <FaBookOpen /> 상세 리뷰
+                            </LinkButton>
+                          )}
                         </Actions>
                       </ProjectGlass>
                     </ProjectCard>
-                  </div>
-                ))}
+                  </ProjectInline>
+                ) : null}
               </ContentStack>
             </Item>
           );
@@ -396,6 +373,3 @@ export const Experience: React.FC = () => {
     </Section>
   );
 };
-
-// ✅ import { Experience } 로도, import Experience 로도 둘 다 되게 export 해둡니다.
-export default Experience;

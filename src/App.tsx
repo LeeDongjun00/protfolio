@@ -5,13 +5,11 @@ import { GlobalStyle } from './styles/GlobalStyle';
 import { Header } from './components/Header';
 
 import HeroSection from './components/sections/HeroSection';
+import { Education } from './components/sections/Education';
 import { AboutSection } from './components/sections/AboutSection';
 import { SkillsSection } from './components/sections/SkillsSection';
-import { ProjectsSection } from './components/sections/ProjectsSection';
-
-// ✅ Experience.tsx에서 named + default 둘 다 export 해두었지만,
-// 여기서는 기존대로 named import 유지합니다.
-import { Experience } from './components/sections/Experience';
+import { TroubleShooting } from './components/sections/TroubleShooting';
+import { OtherExperience } from './components/sections/OtherExperienceSection';
 
 function App() {
   return (
@@ -20,7 +18,7 @@ function App() {
       <Header />
 
       <HeroSection />
-      <Experience />
+      <Education />
       <AboutSection />
       <SkillsSection />
       <TroubleShooting />
