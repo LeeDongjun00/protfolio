@@ -1,9 +1,22 @@
 // src/constants/data.ts
 import type React from 'react';
 
-import { FaLaptopCode, FaDatabase, FaCloud } from 'react-icons/fa';
-import { FaBook, FaComments, FaLightbulb } from 'react-icons/fa';
-import { FaJava, FaReact, FaDocker, FaAws } from 'react-icons/fa';
+import {
+  FaLaptopCode,
+  FaDatabase,
+  FaCloud,
+  FaBook,
+  FaComments,
+  FaLightbulb,
+  FaJava,
+  FaReact,
+  FaDocker,
+  FaAws,
+  FaUsers,
+  FaBolt,
+  FaProjectDiagram,
+} from 'react-icons/fa';
+
 import {
   SiSpringboot,
   SiJavascript,
@@ -12,13 +25,12 @@ import {
   SiOracle,
   SiSwagger,
   SiAxios,
-  SiFlutter,
-  SiMysql,
 } from 'react-icons/si';
-/* react-icons 컴포넌트도 허용 */
+
+/* =========================
+   Types
+========================= */
 export type IconLike = string | React.ComponentType<any>;
-/** ✅ 기존 이미지 경로(string) 방식도 살리고, ✅ react-icons 컴포넌트도 허용 */
-export type IconLike = string | React.ComponentType;
 
 export interface TechStack {
   name: string;
@@ -57,12 +69,14 @@ export interface SkillCategory {
   skills: Skill[];
 }
 
+// [수정됨] detailUrl 속성 추가 (선택 사항)
 export interface Project {
   title: string;
   description: string;
   tags: string[];
   githubUrl: string | string[];
   thumbnail?: string;
+  detailUrl?: string; // 상세 페이지 경로
 }
 
 export interface OtherExperience {
@@ -73,14 +87,12 @@ export interface OtherExperience {
   githubUrl?: string;
 }
 
-/* ✅ What I'm Good At 타입 추가 */
 export interface Strength {
   title: string;
   icon: React.ComponentType<any>;
   description: string;
 }
 
-/* ✅ TroubleShooting 타입 추가 */
 export interface TroubleShootingItem {
   project: string;
   title: string;
@@ -104,9 +116,8 @@ export const introData = {
     { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
     { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
     { name: 'React', icon: FaReact, color: '#61DAFB' },
-    { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
     { name: 'Oracle SQL', icon: SiOracle, color: '#F80000' },
-  ] satisfies TechStack[],
+  ] as TechStack[],
 };
 
 /* =========================
@@ -141,13 +152,13 @@ export const timelineData: TimelineItem[] = [
     date: '2025.12 - 2026.01',
     title: 'Flutter 팀 프로젝트(패션관리 앱)',
     description:
-      'Flutter와 Firebase를 활용하여 계층 분리를 고려한 구조로 앱을 개발하고, Firestore 기반 데이터 모델링과 상태 흐름 제어를 통해 일정,룩북,옷장 기능을 구현하였습니다.',
+      'Flutter와 Firebase를 활용하여 계층 분리를 고려한 구조로 앱을 개발하고, Firestore 기반 데이터 모델링과 상태 흐름 제어를 통해 일정, 룩북, 옷장 기능을 구현하였습니다.',
   },
   {
     date: '2025.11 - 2025.12',
     title: 'React 개인 프로젝트(취미 SNS)',
     description:
-      'React와 Node.js(Express), MySQL을 활용하여 RESTful 아키텍처 기반의 SNS 서비스를 개발하고, 피드·댓글·팔로우·알림 기능과 사용자 행동 로그를 반영한 랭킹 및 추천 로직을 구현하였습니다..',
+      'React와 Node.js(Express), MySQL을 활용하여 RESTful 아키텍처 기반의 SNS 서비스를 개발하고, 피드·댓글·팔로우·알림 기능과 사용자 행동 로그를 반영한 랭킹 및 추천 로직을 구현하였습니다.',
   },
   {
     date: '2025.10 - 2025.11',
@@ -159,7 +170,7 @@ export const timelineData: TimelineItem[] = [
     date: '2025.07 - 2025.12',
     title: 'MSA기반 플러터(Dart)활용 자바(JAVA)프론트엔드 백엔드 풀스택 웹(앱)개발 과정 수료',
     description:
-      'Java/Spring 생태계 전반, React 기반의 웹 개발 기술을 학습하고 여러 번의 팀 프로젝트를 통해 협업 능력 및 소통 능력를 길렀습니다.',
+      'Java/Spring 생태계 전반, React 기반의 웹 개발 기술을 학습하고 여러 번의 팀 프로젝트를 통해 협업 능력 및 소통 능력을 길렀습니다.',
   },
   {
     date: '2025.04 - 2025.12',
@@ -176,6 +187,8 @@ export const timelineData: TimelineItem[] = [
 ];
 
 /* =========================
+   Projects (Experience 섹션에서 timeline index와 같은 index로 매칭)
+========================= */
 export const projectsData: Project[] = [
   {
     title: '전자 옷장 및 일정에 맞는 코디 앱(MODE)',
@@ -184,6 +197,7 @@ export const projectsData: Project[] = [
       'Flutter와 Firebase를 활용하여 계층 분리를 고려한 구조로 앱을 개발하고, Firestore 기반 데이터 모델링과 상태 흐름 제어를 통해 일정,룩북,옷장 기능을 구현하였습니다.',
     tags: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'Firebase Auth', 'Firebase Storage'],
     githubUrl: ['https://github.com/yeseul1008/FlutterTeamProject.git'],
+    detailUrl: '/project/mode', // [수정됨] 상세 페이지 연결
   },
   {
     title: '취미 기반 SNS 웹사이트(HobbyWave)',
@@ -192,6 +206,7 @@ export const projectsData: Project[] = [
       'React와 Node.js(Express), MySQL을 활용하여 RESTful 아키텍처 기반의 SNS 서비스를 개발하고, 피드·댓글·팔로우·알림 기능과 사용자 행동 로그를 반영한 랭킹 및 추천 로직을 구현하였습니다.',
     tags: ['React', 'Node.js', 'Express', 'REST API', 'MySQL', 'JWT', 'AWS'],
     githubUrl: 'https://github.com/LeeDongjun00/kidultSNS.git',
+    // [수정됨] detailUrl 없음 (상세 페이지 버튼 미노출)
   },
   {
     title: '여행 플랫폼(아임레디)',
@@ -200,6 +215,7 @@ export const projectsData: Project[] = [
       'Spring Boot와 JSP를 활용한 MVC 아키텍처 기반의 여행 플랫폼을 개발하여 사용자 입력 중심의 여행 일정 생성 로직과 Oracle DB 연동 흐름을 구현하였습니다.',
     tags: ['Spring Boot', 'JSP', 'MyBatis', 'Oracle SQL', 'MVC Pattern', 'Kakao Map API'],
     githubUrl: 'https://github.com/LeeDongjun00/Spring_TeamProject.git',
+    detailUrl: '/project/spring', // [수정됨] 상세 페이지 연결 (Spring.tsx로 라우팅 필요)
   },
 ];
 
@@ -207,7 +223,7 @@ export const featuredProjectsDescription =
   '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
 
 export const otherExperienceDescription =
-  '성장하기 위해 다양한 경험을 쌓고 노력합니다.';
+  '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
 
 export const otherExperienceData: OtherExperience[] = [
   {
@@ -237,8 +253,7 @@ export const otherExperienceData: OtherExperience[] = [
 ];
 
 /* =========================
-   CORE VALUES
-   Core Values (기존 그대로)
+   Core Values
 ========================= */
 export const coreValuesData: CoreValue[] = [
   {
@@ -259,7 +274,7 @@ export const coreValuesData: CoreValue[] = [
 ];
 
 /* =========================
-   WHAT I'M GOOD AT
+   What I'm Good At
 ========================= */
 export const strengthsData: Strength[] = [
   {
@@ -394,6 +409,8 @@ export const skillsData: SkillCategory[] = [
 ];
 
 /* =========================
+   TroubleShooting
+========================= */
 export const troubleShootingData: TroubleShootingItem[] = [
   {
     project: 'MODE (코디 다이어리)',
@@ -437,8 +454,13 @@ export const troubleShootingData: TroubleShootingItem[] = [
     result:
       '서비스 정보는 유지하면서도 개인정보/정합성 이슈를 줄였고, 이후 프로젝트에서도 “삭제/유지/익명화” 판단 기준을 갖게 됐습니다.',
     insight: '엔티티 삭제는 연관 데이터의 성격에 따라 전략을 분리해야 한다는 기준을 정립했습니다.',
-   Projects
-export const projectsData: Project[] = [
+  },
+];
+
+/* =========================
+   (옵션) 추가 프로젝트
+========================= */
+export const extraProjectsData: Project[] = [
   {
     title: '컨텐츠 리뷰 사이트 프로젝트(Review Tag)',
     thumbnail: '/assets/review_tag_main.png',
@@ -457,38 +479,5 @@ export const projectsData: Project[] = [
       'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 장바구니 기능과 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
     tags: ['Java', 'Spring Boot', 'JSP', 'Ajax', 'jQuery', 'Oracle SQL'],
     githubUrl: 'https://github.com/wantraiseapomeranian/kingHeart.git',
-  },
-];
-
-export const featuredProjectsDescription =
-  '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
-
-export const otherExperienceDescription =
-  '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
-
-export const otherExperienceData: OtherExperience[] = [
-  {
-    title: 'TDB_Server(캡스톤)',
-    summary: 'IoT 하드웨어와 모바일 앱을 연결하는 하이브리드 아키텍처 기반의 NestJS 백엔드 서버',
-    highlights: [
-      'React Native 앱과 Raspberry Pi 하드웨어 클라이언트 간의 실시간 데이터 동기화 처리',
-      'Gemini CLI 및 AI 도구(Cursor)를 활용한 워크플로우 최적화 및 빠른 기능 구현',
-      '타입 안정성을 위한 TypeScript 도입 및 RESTful API 설계',
-      'MySQL 데이터베이스를 활용한 약물 관리 및 사용자 데이터 처리 시스템 구축',
-    ],
-    techStack: ['NestJS', 'TypeScript', 'RESTful API', 'MySQL', 'Raspberry Pi', 'Gemini CLI', 'cursor'],
-    githubUrl: 'https://github.com/wantraiseapomeranian/TDB_Server.git',
-  },
-  {
-    title: 'CRP_Server(캡스톤)',
-    summary: 'ExpressJS 기반의 확장 가능한 RESTful API 서버 및 WebSocket 실시간 통신 구현',
-    highlights: [
-      'Express.js 프레임워크를 활용한 모듈화된 백엔드 아키텍처 설계',
-      'RESTful API 설계 원칙을 준수한 엔드포인트 구현 및 문서화',
-      'WebSocket을 통한 실시간 양방향 통신 기능 구현',
-      'MySQL 데이터베이스 설계 및 쿼리 최적화를 통한 성능 개선',
-    ],
-    techStack: ['ExpressJS', 'JavaScript', 'REST API', 'WebSocket', 'MySQL'],
-    githubUrl: 'https://github.com/wantraiseapomeranian/CRP_Server.git',
   },
 ];
