@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaGithub, FaBookOpen } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; 
 
 import { Card } from '../common/Card';
 import { LinkButton } from '../common/Button';
@@ -163,7 +164,6 @@ const ProjectCard = styled.div`
   }
 `;
 
-// 👇 [여기 수정됨] 테두리 디자인 변경!
 const ProjectThumb = styled.div`
   position: relative;
   min-height: 320px;
@@ -174,16 +174,9 @@ const ProjectThumb = styled.div`
   
   margin-left: -12px;
   
-  // ✅ 옵션 1: 은은한 네온 글로우 효과 (현재 적용됨)
-  border: 2px solid #374151; // 짙은 회색 테두리
-  box-shadow: 0 4px 25px ${({ theme }) => theme.colors.primary}40; // 파란색 빛 효과
+  border: 2px solid #374151;
+  box-shadow: 0 4px 25px ${({ theme }) => theme.colors.primary}40;
 
-  /* // ✅ 옵션 2: 이중 테두리 효과 (쓰고 싶으면 위 두 줄 지우고 주석 해제)
-  border: 2px solid ${({ theme }) => theme.colors.primary}; // 안쪽 파란선
-  box-shadow: 0 0 0 4px #1f2937; // 바깥쪽 어두운선
-  */
-
-  // (선택) 마우스 올렸을 때 효과
   transition: all 0.3s ease;
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
@@ -273,6 +266,8 @@ const itemVariants = {
 };
 
 export const Education: React.FC = () => {
+  const navigate = useNavigate(); // 👈 [추가됨] 페이지 이동 함수
+
   return (
     <Section id="education">
       <SectionTitle $align="center">Education & Experience</SectionTitle>
@@ -350,11 +345,14 @@ export const Education: React.FC = () => {
                             </LinkButton>
                           ) : null}
 
-                          {/* 2. 상세 리뷰 버튼 (MODE 프로젝트에만 표시) */}
-                          {p.title.includes("MODE") && (
+                          {/* 2. 상세 리뷰 버튼 (수정됨!) */}
+                          {p.detailUrl && (
                             <LinkButton
-                              href="#"
-                              target="_self"
+                              href={p.detailUrl} 
+                              onClick={(e: React.MouseEvent) => {
+                                e.preventDefault(); 
+                                navigate(p.detailUrl!); 
+                              }}
                               $variant="outline"
                             >
                               <FaBookOpen /> 상세 리뷰

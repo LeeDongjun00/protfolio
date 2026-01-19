@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 interface BaseButtonProps {
@@ -108,16 +109,15 @@ const StyledLink = styled.a<BaseButtonProps>`
   }}
 `;
 
-interface ButtonProps extends BaseButtonProps {
+// ▼ [수정됨] 표준 버튼 속성(onClick 등)을 모두 상속받도록 변경
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, BaseButtonProps {
   children: React.ReactNode;
-  onClick?: () => void;
 }
 
-interface LinkButtonProps extends BaseButtonProps {
+// ▼ [수정됨] 표준 a 태그 속성(onClick, href, target 등)을 모두 상속받도록 변경
+interface LinkButtonProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>, BaseButtonProps {
   children: React.ReactNode;
-  href: string;
-  target?: string;
-  rel?: string;
+  as?: any; // Link 컴포넌트로 변환될 때를 대비해 추가
 }
 
 export const Button: React.FC<ButtonProps> = ({ 
@@ -129,15 +129,11 @@ export const Button: React.FC<ButtonProps> = ({
 
 export const LinkButton: React.FC<LinkButtonProps> = ({ 
   children, 
-  href,
-  target,
-  rel,
-  ...props 
+  ...props // href, target, onClick 등이 여기로 다 들어옵니다
 }) => {
   return (
-    <StyledLink href={href} target={target} rel={rel} {...props}>
+    <StyledLink {...props}>
       {children}
     </StyledLink>
   );
 };
-

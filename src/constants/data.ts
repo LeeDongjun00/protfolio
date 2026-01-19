@@ -69,12 +69,14 @@ export interface SkillCategory {
   skills: Skill[];
 }
 
+// [수정됨] detailUrl 속성 추가 (선택 사항)
 export interface Project {
   title: string;
   description: string;
   tags: string[];
   githubUrl: string | string[];
   thumbnail?: string;
+  detailUrl?: string; // 상세 페이지 경로
 }
 
 export interface OtherExperience {
@@ -195,6 +197,7 @@ export const projectsData: Project[] = [
       'Flutter와 Firebase를 활용하여 계층 분리를 고려한 구조로 앱을 개발하고, Firestore 기반 데이터 모델링과 상태 흐름 제어를 통해 일정,룩북,옷장 기능을 구현하였습니다.',
     tags: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'Firebase Auth', 'Firebase Storage'],
     githubUrl: ['https://github.com/yeseul1008/FlutterTeamProject.git'],
+    detailUrl: '/project/mode', // [수정됨] 상세 페이지 연결
   },
   {
     title: '취미 기반 SNS 웹사이트(HobbyWave)',
@@ -203,6 +206,7 @@ export const projectsData: Project[] = [
       'React와 Node.js(Express), MySQL을 활용하여 RESTful 아키텍처 기반의 SNS 서비스를 개발하고, 피드·댓글·팔로우·알림 기능과 사용자 행동 로그를 반영한 랭킹 및 추천 로직을 구현하였습니다.',
     tags: ['React', 'Node.js', 'Express', 'REST API', 'MySQL', 'JWT', 'AWS'],
     githubUrl: 'https://github.com/LeeDongjun00/kidultSNS.git',
+    // [수정됨] detailUrl 없음 (상세 페이지 버튼 미노출)
   },
   {
     title: '여행 플랫폼(아임레디)',
@@ -211,6 +215,7 @@ export const projectsData: Project[] = [
       'Spring Boot와 JSP를 활용한 MVC 아키텍처 기반의 여행 플랫폼을 개발하여 사용자 입력 중심의 여행 일정 생성 로직과 Oracle DB 연동 흐름을 구현하였습니다.',
     tags: ['Spring Boot', 'JSP', 'MyBatis', 'Oracle SQL', 'MVC Pattern', 'Kakao Map API'],
     githubUrl: 'https://github.com/LeeDongjun00/Spring_TeamProject.git',
+    detailUrl: '/project/spring', // [수정됨] 상세 페이지 연결 (Spring.tsx로 라우팅 필요)
   },
 ];
 
@@ -453,8 +458,7 @@ export const troubleShootingData: TroubleShootingItem[] = [
 ];
 
 /* =========================
-   (옵션) 추가 프로젝트가 필요하면 여기로 분리해서 쓰세요
-   - 기존에 projectsData를 2번 선언하던 문제 해결용
+   (옵션) 추가 프로젝트
 ========================= */
 export const extraProjectsData: Project[] = [
   {
