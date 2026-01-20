@@ -51,11 +51,10 @@ const Placeholder = styled.span`
   font-size: 0.9rem;
 `;
 
-// ▼ 여기가 변경된 부분입니다! (export default를 없애고 export const 사용)
 export const MyWorkMode: React.FC = () => {
   return (
     <Wrapper>
-      <Title>MODE (Flutter 코디 다이어리) – 내가 구현한 부분</Title>
+      <Title>MODE (Flutter 전자옷장 어플리케이션)</Title>
 
       {/* 1 */}
       <Section>
