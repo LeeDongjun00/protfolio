@@ -1,32 +1,41 @@
+네, 바로 복사해서 붙여넣으실 수 있는 **최종본**입니다.
+
+```markdown
 # Portfolio Website
 
 개인 포트폴리오 웹사이트입니다. React와 TypeScript를 기반으로 제작된 모던하고 반응형인 Single Page Application(SPA)입니다.
 
 ## 🧷 링크
-https://port-folio-minjun.vercel.app/
+👉 **Live Demo:** (https://portfoliodongjun.s3.ap-northeast-2.amazonaws.com/index.html)
 
 
 ## 📋 목차
 
-- [프로젝트 소개](#프로젝트-소개)
-- [기술 스택](#기술-스택)
-- [주요 기능](#주요-기능)
-- [프로젝트 구조](#프로젝트-구조)
-- [시작하기](#시작하기)
-- [빌드 및 배포](#빌드-및-배포)
-- [커스터마이징](#커스터마이징)
-- [섹션 설명](#섹션-설명)
+- [프로젝트 소개](#-프로젝트-소개)
+- [기술 스택](#-기술-스택)
+- [주요 기능](#-주요-기능)
+- [프로젝트 구조](#-프로젝트-구조)
+- [시작하기](#-시작하기)
+- [빌드 및 배포](#-빌드-및-배포)
+- [커스터마이징](#-커스터마이징)
+- [섹션 설명](#-섹션-설명)
+- [디자인 시스템](#-디자인-시스템)
+- [작성자](#-작성자)
+
+<br>
 
 ## 🎯 프로젝트 소개
 
-이 포트폴리오 웹사이트는 개발자의 기술 스택, 프로젝트 경험, 교육 이력 등을 체계적으로 보여주는 개인 포트폴리오입니다. 
+이 포트폴리오 웹사이트는 개발자의 기술 스택, 프로젝트 경험, 교육 이력 등을 체계적으로 보여주는 개인 포트폴리오입니다.
 
-**핵심 철학**: "데이터의 흐름을 꿰뚫고, 견고한 서비스 아키텍처를 설계합니다"
+> **핵심 철학**: "데이터의 흐름을 꿰뚫고, 견고한 서비스 아키텍처를 설계합니다"
 
-- 모던하고 깔끔한 UI/UX 디자인
-- 완전 반응형 웹 디자인 (모바일, 태블릿, 데스크톱)
-- 부드러운 스크롤 애니메이션 및 인터랙션
-- Single Page Application 구조
+- ✨ **모던하고 깔끔한 UI/UX 디자인**
+- 📱 **완전 반응형 웹 디자인** (Mobile, Tablet, Desktop)
+- 🎬 **부드러운 스크롤 애니메이션 및 인터랙션**
+- ⚡ **Single Page Application (SPA) 구조**
+
+<br>
 
 ## 🛠 기술 스택
 
@@ -47,12 +56,14 @@ https://port-folio-minjun.vercel.app/
 - **@vitejs/plugin-react** - Vite React 플러그인
 - **TypeScript** - 정적 타입 검사
 
+<br>
+
 ## ✨ 주요 기능
 
 ### 1. 헤더 (Header)
 - 스크롤 시 상단 고정 (Sticky Header)
 - 부드러운 스크롤 네비게이션
-- 반응형 메뉴
+- 반응형 모바일 메뉴 (Hamburger Menu)
 
 ### 2. 히어로 섹션 (Hero Section)
 - 프로필 이미지 및 자기소개
@@ -61,9 +72,9 @@ https://port-folio-minjun.vercel.app/
 - Education & Experience 타임라인
 
 ### 3. About 섹션
-- 개발 철학 명언
+- 개발 철학 명언 (Quote)
 - Core Values 카드 (3개)
-- 코드 에디터 스타일 정보 섹션
+- 코드 에디터 스타일의 개인 정보 표시
 
 ### 4. Skills 섹션
 - 기술 스택 카테고리별 분류
@@ -71,47 +82,40 @@ https://port-folio-minjun.vercel.app/
   - Frontend & Mobile
   - Collaboration & DevOps
 - 각 스킬별 진행률 표시 (Progress Bar)
-- 프레임워크 공식 색상 적용
+- 프레임워크 공식 브랜드 색상 적용
 
 ### 5. Projects 섹션
-- Featured Projects (주요 프로젝트)
-  - 썸네일 이미지
-  - 프로젝트 설명
-  - 기술 스택 태그
-  - GitHub 링크 (복수 지원)
-- Other Experience (기타 경험)
-  - 프로젝트 요약 및 하이라이트
-  - 기술 스택 표시
-  - GitHub 링크
+- **Featured Projects** (주요 프로젝트)
+  - 썸네일 이미지, 프로젝트 설명, 기술 스택 태그
+  - GitHub 링크 (Frontend/Backend 분리 지원)
+  - 상세 리뷰 페이지 연결 지원 (My Part - PM/핵심기능)
+- **Other Experience** (기타 경험)
+  - 프로젝트 요약 및 하이라이트 (DB 설계, 하드웨어 모델링 등)
+  - 기술 스택 표시 및 GitHub 링크
+
+<br>
 
 ## 📁 프로젝트 구조
 
-```
+```bash
 PortFolio-MINJUN/
 ├── public/
 │   └── assets/
 │       ├── favicon.png
-│       └── minjun_profile.jpg
+│       ├── minjun_profile.jpg
+│       └── (project_images...)
 ├── src/
 │   ├── components/
-│   │   ├── common/          # 재사용 가능한 공통 컴포넌트
-│   │   │   ├── Button.tsx
-│   │   │   ├── Card.tsx
-│   │   │   ├── ProgressBar.tsx
-│   │   │   └── SectionTitle.tsx
+│   │   ├── common/          # 재사용 가능한 공통 컴포넌트 (Button, Card, ProgressBar)
 │   │   ├── Header.tsx       # 전역 헤더
-│   │   └── sections/        # 섹션별 컴포넌트
-│   │       ├── AboutSection.tsx
-│   │       ├── HeroSection.tsx
-│   │       ├── ProjectsSection.tsx
-│   │       └── SkillsSection.tsx
+│   │   └── sections/        # 섹션별 컴포넌트 (Hero, About, Projects, Skills)
 │   ├── constants/
-│   │   └── data.ts          # 모든 텍스트 데이터 및 설정
+│   │   └── data.ts          # 모든 텍스트 데이터 및 설정 관리
 │   ├── styles/
 │   │   └── GlobalStyle.ts   # 전역 스타일
 │   ├── types/
 │   │   └── styled.d.ts      # styled-components 타입 정의
-│   ├── App.tsx              # 메인 앱 컴포넌트
+│   ├── App.tsx              # 메인 앱 컴포넌트 (Router 설정)
 │   ├── main.tsx             # 엔트리 포인트
 │   └── theme.ts             # 테마 설정 (색상, 폰트, 레이아웃)
 ├── index.html
@@ -119,139 +123,100 @@ PortFolio-MINJUN/
 ├── tsconfig.json
 ├── vite.config.ts
 └── README.md
+
 ```
 
 ## 🚀 시작하기
 
 ### 필수 요구사항
 
-- Node.js 18.0.0 이상
-- npm
+* Node.js 18.0.0 이상
+* npm
 
 ### 설치
 
-1. 저장소 클론
+1. **저장소 클론**
 ```bash
-git clone https://github.com/your-username/portfolio.git
+git clone [https://github.com/LeeDongjun00/portfolio.git](https://github.com/LeeDongjun00/portfolio.git)
 cd PortFolio-MINJUN
+
 ```
 
-2. 의존성 설치
+
+2. **의존성 설치**
 ```bash
 npm install
+
 ```
 
-3. 개발 서버 실행
+
+3. **개발 서버 실행**
 ```bash
 npm run dev
+
 ```
+
 
 개발 서버는 기본적으로 `http://localhost:5173`에서 실행됩니다.
 
-### 빌드
+## 📦 빌드 및 배포
 
-프로덕션 빌드를 생성하려면:
+### 빌드 (Build)
+
+프로덕션 빌드를 생성하려면 다음 명령어를 실행합니다. 빌드된 파일은 `dist/` 디렉토리에 생성됩니다.
 
 ```bash
 npm run build
+
 ```
-
-빌드된 파일은 `dist/` 디렉토리에 생성됩니다.
-
-### 프리뷰
-
-빌드된 결과물을 미리보려면:
-
-```bash
-npm run preview
-```
-
-## 📦 빌드 및 배포
 
 ### Vercel 배포 (권장)
 
-1. [Vercel](https://vercel.com)에 가입
-2. GitHub 저장소 연결
-3. 프로젝트 import
-4. 빌드 설정:
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-5. Deploy 클릭
-
-### Netlify 배포
-
-1. [Netlify](https://www.netlify.com)에 가입
-2. GitHub 저장소 연결
+1. [Vercel](https://vercel.com)에 로그인 후 'Add New Project' 클릭
+2. GitHub 저장소 연결 및 프로젝트 Import
 3. 빌드 설정:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-4. Deploy site 클릭
+* **Build Command**: `npm run build`
+* **Output Directory**: `dist`
 
-### GitHub Pages 배포
 
-1. `vite.config.ts`에 base 경로 추가:
-```typescript
-export default defineConfig({
-  base: '/portfolio/', // 저장소 이름
-  plugins: [react()],
-})
-```
-
-2. 빌드 및 배포:
-```bash
-npm run build
-# dist 폴더의 내용을 gh-pages 브랜치에 푸시
-```
+4. **Deploy** 클릭
 
 ## 🎨 커스터마이징
 
 ### 데이터 수정
 
-모든 텍스트 데이터는 `src/constants/data.ts` 파일에서 관리됩니다.
+모든 텍스트 데이터는 `src/constants/data.ts` 파일에서 중앙 관리됩니다.
 
 #### 자기소개 수정
+
 ```typescript
 export const introData = {
-  headline: '여기에 헤드라인 입력',
-  subtext: '여기에 서브텍스트 입력',
-  techStack: ['기술1', '기술2', ...],
+  headline: '아이디어를 코드로 증명하는 개발자',
+  subtext: '구조와 흐름을 이해해 근본적인 해결을 고민합니다.',
+  techStack: ['Java', 'Spring Boot', 'React', 'Flutter'],
 };
+
 ```
 
 #### 프로젝트 추가/수정
+
 ```typescript
 export const projectsData: Project[] = [
   {
     title: '프로젝트 제목',
     description: '프로젝트 설명',
-    tags: ['태그1', '태그2'],
-    githubUrl: 'GitHub URL',
-    thumbnail: '/assets/thumbnail.jpg', // 선택사항
+    tags: ['React', 'TypeScript'],
+    githubUrl: '[https://github.com/](https://github.com/)...',
+    thumbnail: '/assets/thumbnail.jpg',
+    detailUrl: '/project/detail' // 상세 페이지 경로 (선택)
   },
 ];
-```
 
-#### 기술 스택 수정
-```typescript
-export const skillsData: SkillCategory[] = [
-  {
-    title: '카테고리명',
-    skills: [
-      {
-        name: '기술명',
-        icon: IconComponent,
-        percentage: 85,
-        description: '설명',
-        color: '#색상코드', // 선택사항
-      },
-    ],
-  },
-];
 ```
 
 ### 테마 색상 변경
 
-`src/theme.ts` 파일에서 색상 팔레트를 수정할 수 있습니다:
+`src/theme.ts` 파일에서 전체 색상 팔레트를 수정할 수 있습니다.
 
 ```typescript
 export const theme = {
@@ -262,102 +227,48 @@ export const theme = {
       heading: '#191F28',     // 제목 색상
       body: '#4E5968',        // 본문 색상
     },
-    gray: {
-      light: '#F2F4F6',       // 카드 배경
-      border: '#E5E8EB',      // 테두리
-    },
+    // ...
   },
-  // ...
 };
+
 ```
-
-### 프로필 이미지 변경
-
-1. `public/assets/` 폴더에 새 이미지 추가
-2. `src/components/sections/HeroSection.tsx`에서 경로 수정:
-```typescript
-<ProfileImage 
-  src="/assets/your-image.jpg" 
-  alt="프로필 사진"
-/>
-```
-
-## 📖 섹션 설명
-
-### Hero Section
-- **Intro Area**: 프로필 이미지, 헤드라인, 서브텍스트, Tech Stack 태그
-- **What I Do**: Frontend, Backend, DevOps 카드 그리드
-- **Education & Experience**: 타임라인 형식의 교육 및 경력 이력
-
-### About Section
-- **Quote**: 개발 철학을 담은 명언
-- **Core Values**: 3개의 핵심 가치 카드
-- **Information**: 코드 에디터 스타일의 개인 정보
-
-### Skills Section
-- 카테고리별로 기술 스택을 분류하여 표시
-- 각 스킬의 숙련도를 Progress Bar로 시각화
-- 프레임워크별 공식 색상 적용
-
-### Projects Section
-- **Featured Projects**: 주요 프로젝트를 큰 카드로 강조
-- **Other Experience**: 기타 프로젝트를 간결한 카드로 표시
-- 각 프로젝트의 GitHub 링크 제공
 
 ## 🎯 디자인 시스템
 
-### 색상
-- **Primary**: `#3182F6` - 메인 브랜드 컬러
-- **Text Heading**: `#191F28` - 제목 텍스트
-- **Text Body**: `#4E5968` - 본문 텍스트
-- **Gray Light**: `#F2F4F6` - 카드 배경
-- **Gray Border**: `#E5E8EB` - 테두리
+### 색상 (Color Palette)
 
-### 타이포그래피
-- **Font Family**: Pretendard, system-ui, sans-serif
-- **Heading**: Bold (700)
-- **Body**: Regular (400)
+* **Primary**: `#3182F6` (Main Brand Color)
+* **Text Heading**: `#191F28`
+* **Text Body**: `#4E5968`
+* **Gray Light**: `#F2F4F6` (Card Background)
+* **Gray Border**: `#E5E8EB`
 
-### 레이아웃
-- **Max Width**: 1200px
-- **Container**: 중앙 정렬
-- **Breakpoints**:
-  - Mobile: 768px
-  - Tablet: 1024px
+### 타이포그래피 (Typography)
 
-## 🔧 개발 스크립트
+* **Font Family**: Pretendard, system-ui, sans-serif
+* **Heading**: Bold (700)
+* **Body**: Regular (400)
 
-```bash
-# 개발 서버 실행
-npm run dev
+### 레이아웃 (Layout)
 
-# 프로덕션 빌드
-npm run build
+* **Max Width**: 1200px (Centered)
+* **Breakpoints**:
+* Mobile: 768px
+* Tablet: 1024px
 
-# 빌드 결과 미리보기
-npm run preview
-```
 
-## 📝 라이선스
-
-이 프로젝트는 개인 포트폴리오 용도로 제작되었습니다.
 
 ## 👤 작성자
 
-**이동준**
-- Email: dongjun032061@gmail.com
-- GitHub:https://github.com/LeeDongjun00
+**이동준 (Lee Dongjun)**
 
-## 🙏 감사의 말
-
-이 포트폴리오는 다음 오픈소스 프로젝트들을 사용합니다:
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [styled-components](https://styled-components.com/)
-- [framer-motion](https://www.framer.com/motion/)
-- [react-icons](https://react-icons.github.io/react-icons/)
+* 📧 **Email**: dongjun032061@gmail.com
+* 🐙 **GitHub**: [https://github.com/LeeDongjun00](https://github.com/LeeDongjun00)
 
 ---
 
-**마지막 업데이트**: 2026년 1월
+**Last Update**: 2026. 01.
 
+```
+
+```
