@@ -5,8 +5,6 @@ import {
   FaLaptopCode,
   FaDatabase,
   FaCloud,
-  FaBook,
-  FaComments,
   FaLightbulb,
   FaJava,
   FaReact,
@@ -223,31 +221,32 @@ export const featuredProjectsDescription =
   '주요 프로젝트들을 통해 다양한 기술 스택과 문제 해결 경험을 쌓았습니다.';
 
 export const otherExperienceDescription =
-  '캡스톤 프로젝트와 해커톤 참여를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
+  '캡스톤 프로젝트와 자격증 공부를 통해 기본 기술들을 학습하고 성장하고 있습니다.';
 
 export const otherExperienceData: OtherExperience[] = [
   {
     title: 'TDB_Server(캡스톤)',
     summary: 'IoT 하드웨어와 모바일 앱을 연결하는 하이브리드 아키텍처 기반의 NestJS 백엔드 서버',
     highlights: [
-      'React Native 앱과 Raspberry Pi 하드웨어 클라이언트 간의 실시간 데이터 동기화 처리',
+      '약물 오남용 방지 및 사용자 관리를 위한 MySQL 데이터베이스 스키마 설계 및 구축 전담', // DB 설계 전담
+      'Fusion 360을 활용하여 핵심 구동 모듈을 3D 모델링하고, Cura로 슬라이싱하여 하드웨어 제작 수행', // 👈 [수정됨] 툴 이름 구체적 명시
+      'NestJS 환경에서 핵심 비즈니스 로직에 대한 CRUD API 구현 지원 및 RESTful API 설계', // CRUD 지원
       'Gemini CLI 및 AI 도구(Cursor)를 활용한 워크플로우 최적화 및 빠른 기능 구현',
-      '타입 안정성을 위한 TypeScript 도입 및 RESTful API 설계',
-      'MySQL 데이터베이스를 활용한 약물 관리 및 사용자 데이터 처리 시스템 구축',
     ],
-    techStack: ['NestJS', 'TypeScript', 'RESTful API', 'MySQL', 'Raspberry Pi', 'Gemini CLI', 'cursor'],
+    // 기술 스택에 Fusion 360, Cura 추가
+    techStack: ['NestJS', 'TypeScript', 'MySQL', 'Fusion 360', 'Cura', 'RESTful API', 'Raspberry Pi'],
     githubUrl: 'https://github.com/wantraiseapomeranian/TDB_Server.git',
   },
   {
     title: 'CRP_Server(캡스톤)',
     summary: 'ExpressJS 기반의 확장 가능한 RESTful API 서버 및 WebSocket 실시간 통신 구현',
     highlights: [
-      'Express.js 프레임워크를 활용한 모듈화된 백엔드 아키텍처 설계',
-      'RESTful API 설계 원칙을 준수한 엔드포인트 구현 및 문서화',
+      '서비스 데이터 흐름을 분석하여 MySQL 데이터베이스 아키텍처를 전담 설계 및 쿼리 최적화', // DB 설계 전담
+      'Express.js 프레임워크를 활용한 백엔드 CRUD 로직 구현 참여 및 모듈화 구조 설계', // CRUD 참여
       'WebSocket을 통한 실시간 양방향 통신 기능 구현',
-      'MySQL 데이터베이스 설계 및 쿼리 최적화를 통한 성능 개선',
+      'RESTful API 설계 원칙을 준수한 엔드포인트 구현 및 문서화',
     ],
-    techStack: ['ExpressJS', 'JavaScript', 'REST API', 'WebSocket', 'MySQL'],
+    techStack: ['ExpressJS', 'JavaScript', 'MySQL', 'REST API', 'WebSocket'],
     githubUrl: 'https://github.com/wantraiseapomeranian/CRP_Server.git',
   },
 ];
@@ -427,7 +426,7 @@ export const troubleShootingData: TroubleShootingItem[] = [
     insight: 'UX는 디자인 문제가 아니라, 개발자가 매 순간 내리는 판단의 기준이라는 걸 체감했습니다.',
   },
   {
-    project: '준비완료 (여행 추천/코스)',
+    project: '아임레디 (여행 추천/코스)',
     title: 'TOUR API 데이터를 DB에 전부 적재할지 판단 이슈',
     tag: 'Tour API / On-demand',
     issue:
@@ -442,7 +441,7 @@ export const troubleShootingData: TroubleShootingItem[] = [
       '기능 구현을 넘어, 외부 API와 DB의 역할을 분리해 프로젝트에 맞는 데이터 전략을 고민하는 시야를 갖게 됐습니다.',
   },
   {
-    project: '준비완료 (여행 추천/코스)',
+    project: '아임레디 (여행 추천/코스)',
     title: '회원 탈퇴 시 리뷰/기록 데이터 처리 전략',
     tag: 'Data Integrity / Privacy',
     issue:
@@ -454,30 +453,5 @@ export const troubleShootingData: TroubleShootingItem[] = [
     result:
       '서비스 정보는 유지하면서도 개인정보/정합성 이슈를 줄였고, 이후 프로젝트에서도 “삭제/유지/익명화” 판단 기준을 갖게 됐습니다.',
     insight: '엔티티 삭제는 연관 데이터의 성격에 따라 전략을 분리해야 한다는 기준을 정립했습니다.',
-  },
-];
-
-/* =========================
-   (옵션) 추가 프로젝트
-========================= */
-export const extraProjectsData: Project[] = [
-  {
-    title: '컨텐츠 리뷰 사이트 프로젝트(Review Tag)',
-    thumbnail: '/assets/review_tag_main.png',
-    description:
-      'Spring Boot와 React를 활용하여 RESTful 아키텍처를 구현하고, 컨텐츠 퀴즈와 관리자 페이지, 랭킹 페이지를 구현하였습니다.',
-    tags: ['Java', 'Spring Boot', 'React', 'JavaScript', 'Axios', 'Bootstrap', 'Oracle SQL'],
-    githubUrl: [
-      'https://github.com/wantraiseapomeranian/reviewTag-be.git',
-      'https://github.com/wantraiseapomeranian/reviewTag-fe.git',
-    ],
-  },
-  {
-    title: '개인 쇼핑몰 프로젝트(King Heart)',
-    thumbnail: '/assets/review_tag_main.png',
-    description:
-      'Spring Boot와 JSP를 활용한 정통 MVC 패턴을 적용하여 데이터 흐름을 명확히 제어하고 장바구니 기능과 상품 카테고리 구현과 결제 기능을 구현하였습니다.',
-    tags: ['Java', 'Spring Boot', 'JSP', 'Ajax', 'jQuery', 'Oracle SQL'],
-    githubUrl: 'https://github.com/wantraiseapomeranian/kingHeart.git',
   },
 ];

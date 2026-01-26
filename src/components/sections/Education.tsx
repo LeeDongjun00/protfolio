@@ -331,7 +331,7 @@ export const Education: React.FC = () => {
                                 rel="noopener noreferrer"
                                 $variant="primary"
                               >
-                                <FaGithub /> {ui === 0 ? 'Backend' : 'Frontend'}
+                                <FaGithub /> GitHub
                               </LinkButton>
                             ))
                           ) : p.githubUrl ? (
@@ -345,7 +345,7 @@ export const Education: React.FC = () => {
                             </LinkButton>
                           ) : null}
 
-                          {/* 2. 상세 리뷰 버튼 (수정됨!) */}
+                          {/* 2. 상세 리뷰 버튼 */}
                           {p.detailUrl && (
                             <LinkButton
                               href={p.detailUrl} 
@@ -355,7 +355,7 @@ export const Education: React.FC = () => {
                               }}
                               $variant="outline"
                             >
-                              <FaBookOpen /> 상세 리뷰
+                              <FaBookOpen /> My Contribution
                             </LinkButton>
                           )}
                         </Actions>
