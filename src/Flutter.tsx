@@ -193,6 +193,11 @@ const ImageBox = styled.div`
   }
 `;
 
+const Placeholder = styled.span`
+  color: #9ca3af;
+  font-size: 0.9rem;
+`;
+
 export const MyWorkMode: React.FC = () => {
   const navigate = useNavigate();
 
@@ -202,15 +207,7 @@ export const MyWorkMode: React.FC = () => {
 
   return (
     <Wrapper>
-      <HeaderControl>
-        <BackButton onClick={handleGoBack}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          이전으로 돌아가기
-        </BackButton>
-      </HeaderControl>
+      <Title>MODE (Flutter 전자옷장 어플리케이션)</Title>
 
       <TitleArea>
         <CoreFeatureText>이 부분은 프로젝트에서 제가 구현한 핵심 부분입니다.</CoreFeatureText>

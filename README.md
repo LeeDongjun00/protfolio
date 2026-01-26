@@ -344,9 +344,9 @@ npm run preview
 
 ## 👤 작성자
 
-**김민준**
-- Email: alswns6258@gmail.com
-- GitHub: [@wantraiseapomeranian](https://github.com/wantraiseapomeranian)
+**이동준**
+- Email: dongjun032061@gmail.com
+- GitHub:https://github.com/LeeDongjun00
 
 ## 🙏 감사의 말
 
