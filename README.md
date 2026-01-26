@@ -3,7 +3,7 @@
 개인 포트폴리오 웹사이트입니다. React와 TypeScript를 기반으로 제작된 모던하고 반응형인 Single Page Application(SPA)입니다.
 
 ## 🧷 링크
-👉 **Live Demo:** (https://portfoliodongjun.s3.ap-northeast-2.amazonaws.com/index.html)
+👉 **Live Demo:** [https://port-folio-minjun.vercel.app/](https://port-folio-minjun.vercel.app/)
 
 
 ## 📋 목차
@@ -120,3 +120,129 @@ PortFolio-MINJUN/
 ├── tsconfig.json
 ├── vite.config.ts
 └── README.md
+```
+
+<br>
+
+## 🚀 시작하기
+
+### 필수 요구사항
+- Node.js 18.0.0 이상
+- npm
+
+### 설치
+
+1. **저장소 클론**
+   ```bash
+   git clone https://github.com/LeeDongjun00/portfolio.git
+   cd PortFolio-MINJUN
+   ```
+
+2. **의존성 설치**
+   ```bash
+   npm install
+   ```
+
+3. **개발 서버 실행**
+   ```bash
+   npm run dev
+   ```
+   개발 서버는 기본적으로 `http://localhost:5173`에서 실행됩니다.
+
+<br>
+
+## 📦 빌드 및 배포
+
+### 빌드 (Build)
+프로덕션 빌드를 생성하려면 다음 명령어를 실행합니다. 빌드된 파일은 `dist/` 디렉토리에 생성됩니다.
+```bash
+npm run build
+```
+
+### Vercel 배포 (권장)
+1. [Vercel](https://vercel.com)에 로그인 후 'Add New Project' 클릭
+2. GitHub 저장소 연결 및 프로젝트 Import
+3. 빌드 설정:
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+4. **Deploy** 클릭
+
+<br>
+
+## 🎨 커스터마이징
+
+### 데이터 수정
+모든 텍스트 데이터는 `src/constants/data.ts` 파일에서 중앙 관리됩니다.
+
+#### 자기소개 수정
+```typescript
+export const introData = {
+  headline: '아이디어를 코드로 증명하는 개발자',
+  subtext: '구조와 흐름을 이해해 근본적인 해결을 고민합니다.',
+  techStack: ['Java', 'Spring Boot', 'React', 'Flutter'],
+};
+```
+
+#### 프로젝트 추가/수정
+```typescript
+export const projectsData: Project[] = [
+  {
+    title: '프로젝트 제목',
+    description: '프로젝트 설명',
+    tags: ['React', 'TypeScript'],
+    githubUrl: 'https://github.com/...',
+    thumbnail: '/assets/thumbnail.jpg',
+    detailUrl: '/project/detail' // 상세 페이지 경로 (선택)
+  },
+];
+```
+
+### 테마 색상 변경
+`src/theme.ts` 파일에서 전체 색상 팔레트를 수정할 수 있습니다.
+```typescript
+export const theme = {
+  colors: {
+    primary: '#3182F6',      // 메인 파란색
+    background: '#FFFFFF',    // 배경색
+    text: {
+      heading: '#191F28',     // 제목 색상
+      body: '#4E5968',        // 본문 색상
+    },
+    // ...
+  },
+};
+```
+
+<br>
+
+## 🎯 디자인 시스템
+
+### 색상 (Color Palette)
+- **Primary**: `#3182F6` (Main Brand Color)
+- **Text Heading**: `#191F28`
+- **Text Body**: `#4E5968`
+- **Gray Light**: `#F2F4F6` (Card Background)
+- **Gray Border**: `#E5E8EB`
+
+### 타이포그래피 (Typography)
+- **Font Family**: Pretendard, system-ui, sans-serif
+- **Heading**: Bold (700)
+- **Body**: Regular (400)
+
+### 레이아웃 (Layout)
+- **Max Width**: 1200px (Centered)
+- **Breakpoints**:
+  - Mobile: 768px
+  - Tablet: 1024px
+
+<br>
+
+## 👤 작성자
+
+**이동준 (Lee Dongjun)**
+- 📧 **Email**: dongjun032061@gmail.com
+- 🐙 **GitHub**: [https://github.com/LeeDongjun00](https://github.com/LeeDongjun00)
+
+---
+
+**Last Update**: 2026. 01.
